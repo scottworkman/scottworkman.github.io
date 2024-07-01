@@ -1,0 +1,274 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-top: 80px; /* set to height of the navbar */
+  margin-bottom: 80px; /* set to height of the footer */
+  background-color: #fff;
+}
+
+/* Top nav and header */
+
+.navbar {
+  min-height: 80px;
+}
+
+.navbar-header, .navbar-collapse {
+  padding-top: 15px;
+}
+
+.main-nav {
+  border-color: #e5e5e5;
+  background-color: #fff;
+  box-shadow: 0 1px 0 rgba(255,255,255,.1);
+}
+
+.main-nav .navbar-brand {
+  color: #11569f;
+  font-weight: 700;
+  font-size: 21px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.main-nav .navbar-nav > li > a {
+  color: #1478cb;
+}
+
+.main-nav .navbar-nav > li > a:hover,
+.main-nav .navbar-nav > li > a:focus {
+  color: #00346b;
+  background-color: #fff;
+}
+
+.main-nav .navbar-nav > .active > a,
+.main-nav .navbar-nav > .active > a:hover {
+  color: #1478cb;
+  background-color: #fff;
+}
+
+.main-nav .nav .open > a, .nav .open > a:hover,
+.main-nav .nav .open > a:focus {
+  color: #00346b;
+  background-color: #fff;
+}
+
+.main-nav .navbar-toggle {
+  border-color: #1478cb;
+  background-color: #1478cb;
+}
+
+.main-nav .navbar-toggle:hover {
+  border-color: #1478cb;
+  background-color: #0c6ebe;
+}
+
+.main-nav .navbar-collapse {
+  border: none;
+}
+
+.main-nav .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+
+.main-nav .nav .caret {
+  border-top-color: #fbdedb;
+  border-bottom-color: #fbdedb;
+}
+
+.main-nav .nav .open > a, .nav .open > a:hover .caret,
+.main-nav .nav .open > a:focus .caret,
+.main-nav .nav .active .caret,
+.main-nav .nav a:hover .caret,
+.main-nav .nav a:focus .caret {
+  border-top-color: #fff;
+  border-bottom-color: #fff;
+}
+
+.main-nav .dropdown-menu > li > a:hover,
+.main-nav .dropdown-menu > li > a:focus,
+.main-nav .dropdown-menu > .active > a,
+.main-nav .dropdown-menu > .active > a:hover,
+.main-nav .dropdown-menu > .active > a:focus {
+  color: #fff;
+  background-color: #a5423b;
+}
+
+/* Footer */
+
+.main-footer {
+  color: #fff;
+  background-color: #1478cb;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+}
+
+/* Homepage elements */
+
+.masthead {
+  color: #fff;
+  height: 250px;
+  width: 100%;
+  background-color: #e6f2fa;
+  background-image: url("/images/uky_pano_repeat.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  position: relative;
+}
+
+.masthead h1 {
+  font-size: 5em;
+  line-height: 1;
+}
+
+.main-nav .navbar-nav > li > a,
+.masthead a {
+  color: #1478cb;
+}
+
+.intro-marketing {
+  padding-bottom: 3em;
+  background-color: #f5f5f5;
+}
+
+.intro-marketing-box {
+  padding-top: 3em;
+}
+
+.preview {
+  padding: 1em 0 3em;
+  text-align: center;
+}
+
+.well {
+  background: #eee;
+}
+
+.credit {
+  top: 5px;
+  right: 5px;
+  position: absolute;
+  opacity: .2;
+}
+
+/* Masthead on secondary pages */
+
+.subhead {
+  color: #fff;
+  position: relative;
+  background-color: #1478cb;
+  padding: 1.5em;
+  text-align: left;
+  margin-bottom: 40px
+}
+
+.subhead h1 {
+  font-size: 26px;
+  margin: auto;
+  text-transform: uppercase;
+}
+
+.subhead .text-muted {
+  color: #00346b;
+}
+
+/* Jumbotron */
+
+.jumbotron {
+  text-align: center;
+  background-color: transparent;
+}
+
+/* Featurette */
+
+.featurette-heading {
+  font-size: 40px;
+  font-weight: normal;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+
+.featurette-author {
+  color: #900;
+  font-size: 18px;
+}
+.featurette-venue {
+  color: #090;
+  font-size: 16px;
+}
+
+/* Helper classes */
+
+hr.soft {
+  background-image: -moz-linear-gradient(left center , rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  border: 0 none;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+}
+
+hr.divider {
+  margin: 40px 0;
+}
+
+/* bibtex */
+
+.bibtex.bibliography {
+  font-size: 18px;
+}
+
+.bibtex.entry {
+  padding-bottom: .5em;
+}
+
+.bibtex.title {
+  color: #1478cb;
+  font-weight: bold;
+}
+
+/* Responsive */
+
+@media(max-width:991px) {
+  .masthead {
+    padding: 1em 0;
+  }
+
+  .masthead h1 {
+    font-size: 3em;
+  }
+
+  .intro-marketing {
+    padding: 3em 0;
+  }
+}
+
+@media ( min-width: 768px ) {
+  .row-sm-flex-center {
+    display:flex;
+    align-items:center;
+  }
+}
+
+@media ( max-width: 768px ) {
+  body {
+    margin-top: 50px
+  }
+  .navbar {
+    min-height: 50px;
+  }
+  .navbar-header {
+    padding-top: 0px;
+  }
+  .subhead {
+    padding: .5em;
+  }
+  .container {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+}

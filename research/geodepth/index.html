@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+
+  <title>Scott Workman | University of Kentucky</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="https://bootswatch.com/3/cosmo/bootstrap.css" rel="stylesheet">
+
+  <!-- Custom styles -->
+  <link href="/styles/base.css" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+  <nav class="navbar navbar-fixed-top main-nav" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Scott Workman</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/research/">Research</a></li>
+          <li><a href="/publications/">Publications</a></li>
+          <li><a href="/resources/cv.pdf">CV</a></li>
+        </ul>
+        <!--<ul class="nav navbar-nav navbar-right">
+          <li><a href="/blog/">Blog</a></li>
+        </ul>-->
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container -->
+  </nav>
+
+  <div class="container"> 
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1 class="featurette-heading"> Augmenting Depth Estimation with Geospatial Context </h1>
+      </div>
+      <div class="col-md-10 col-md-offset-1 text-center">
+        <h2> Scott Workman, Hunter Blanton </h1>
+      </div>
+      
+      <div class="col-md-12">
+  
+        <h2 class="text-primary"> Abstract </h2>
+        <div class="well well-lg"> 
+          Modern cameras are equipped with a wide array of sensors that enable recording the geospatial context of an image. Taking advantage of this, we explore depth estimation under the assumption that the camera is geocalibrated, a problem we refer to as geo-enabled depth estimation. Our key insight is that if capture location is known, the corresponding overhead viewpoint offers a valuable resource for understanding the scale of the scene. We propose an end-to-end architecture for depth estimation that uses geospatial context to infer a synthetic ground-level depth map from a co-located overhead image, then fuses it inside of an encoder/decoder style segmentation network. To support evaluation of our methods, we extend a recently released dataset with overhead imagery and corresponding height maps. Results demonstrate that integrating geospatial context significantly reduces error compared to baselines, both at close ranges and when evaluating at much larger distances than existing benchmarks consider. 
+        </div>       
+ 
+      </div>
+      
+      <div class="col-md-12">
+        <h2 class="text-primary"> ICCV 2021 Paper </h2>
+          <a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Workman_Augmenting_Depth_Estimation_With_Geospatial_Context_ICCV_2021_paper.pdf">
+            <img src="/images/research/traffic/thumb0.jpg" alt="thumbnail">
+            <img src="/images/research/traffic/thumb1.jpg" alt="thumbnail">
+            <img src="/images/research/traffic/thumb2.jpg" alt="thumbnail">
+            <img src="/images/research/traffic/thumb3.jpg" alt="thumbnail">
+            <img src="/images/research/traffic/thumb4.jpg" alt="thumbnail">
+            <img src="/images/research/traffic/thumb5.jpg" alt="thumbnail">
+            <img src="/images/research/traffic/thumb6.jpg" alt="thumbnail">
+            <img src="/images/research/traffic/thumb7.jpg" alt="thumbnail">
+            <img src="/images/research/traffic/thumb8.jpg" alt="thumbnail">
+            <img src="/images/research/traffic/thumb9.jpg" alt="thumbnail">
+        </a>
+
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Citation</h3>
+          </div>
+          <div class="panel-body">
+            <pre>@inproceedings{workman2021augmenting,
+  author={Scott Workman and Hunter Blanton},
+  title={{Augmenting Depth Estimation with Geospatial Context}},
+  booktitle={{IEEE International Conference on Computer Vision (ICCV)}},
+  year=2021
+}
+</pre>
+          </div>
+        </div>
+
+      </div>
+      
+      <div class="col-md-12">
+  
+        <p><h2 class="text-primary"> HoliCity-Overhead Dataset </h2></p>
+<p>Coming soon!</p>
+
+
+      </div>
+    </div> 
+  </div>
+ 
+
+  <footer id="footer" class="main-footer">
+    <div class="container text-center">
+      <h4>&copy; Scott Workman 2024</h4>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
