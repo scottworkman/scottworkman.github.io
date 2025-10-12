@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+
+  <title>Scott Workman</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="https://bootswatch.com/5/cosmo/bootstrap.css" rel="stylesheet">
+
+  <!-- Custom styles -->
+  <link href="/styles/base.css" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg fixed-top main-nav">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Scott Workman</a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-ex1-collapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="navbar-ex1-collapse">
+        <ul class="navbar-nav">
+          <li class="nav-item px-2">
+            <a class="nav-link" href="/research/">Research</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="/publications/">Publications</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="/resources/cv.pdf">CV</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="/contact/">Contact</a>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container -->
+  </nav>
+
+  <div class="container-md">
+    <div class="row">
+      <div class="col-md-12 mt-4 text-center">
+        <h1> Single Image Cloud Detection via Multi-Image Fusion </h1>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-8 my-1 text-center">
+        <h2 class="text-body-secondary"> Scott Workman, M. Usman Rafique, Hunter Blanton, Connor Greenwell, Nathan Jacobs </h1>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-8 my-2 text-center">
+          <a class="btn btn-dark rounded fs-5 mx-2" href="https://arxiv.org/abs/2007.15144" role="button">
+            <i class="fa-regular fa-newspaper"></i> Paper
+          </a>
+      </div>
+    </div>
+
+    <div class="row my-3">
+      <div class="col">
+        <h2 class="text-primary"> Abstract </h2>
+        <div class="card border-secondary-subtle shadow p-3">
+          Artifacts in imagery captured by remote sensing, such as clouds, snow, and shadows, present challenges for various tasks, including semantic segmentation and object detection. A primary challenge in developing algorithms for identifying such artifacts is the cost of collecting annotated training data. In this work, we explore how recent advances in multi-image fusion can be leveraged to bootstrap single image cloud detection. We demonstrate that a network optimized to estimate image quality also implicitly learns to detect clouds. To support the training and evaluation of our approach, we collect a large dataset of Sentinel-2 images along with a per-pixel semantic labelling for land cover. Through various experiments, we demonstrate that our method reduces the need for annotated training data and improves cloud detection performance. 
+        </div>       
+      </div>
+    </div>
+     
+    <div class="row my-3">
+      <div class="col">
+        <h2 class="text-primary"> IGARSS 2020 Oral Paper </h2>
+          <a href="https://arxiv.org/abs/2007.15144">
+            <img src="/images/research/artifact/thumb0.jpg" class="img-fluid" alt="thumbnail">
+            <img src="/images/research/artifact/thumb1.jpg" class="img-fluid" alt="thumbnail">
+            <img src="/images/research/artifact/thumb2.jpg" class="img-fluid" alt="thumbnail">
+            <img src="/images/research/artifact/thumb3.jpg" class="img-fluid" alt="thumbnail">
+        </a>
+      </div>
+    </div>
+
+    <div class="row my-3">
+      <div class="col">
+        <h2 class="text-primary"> BibTeX </h2>
+				<div class="card">
+					<div class="card-body">
+            <pre class="mb-0">@inproceedings{workman2020single,
+  author={Scott Workman and M. Usman Rafique and Hunter Blanton and Connor Greenwell and Nathan Jacobs},
+  title={{Single Image Cloud Detection via Multi-Image Fusion}},
+  booktitle={{IEEE International Geoscience and Remote Sensing Symposium (IGARSS)}},
+  year=2020
+}
+</pre>
+					</div>
+				</div>
+      </div>
+    </div>
+      
+    <div class="row pb-3">
+      <div class="col">
+  
+        
+
+      </div>
+    </div> 
+  </div>
+ 
+
+  <footer id="footer" class="main-footer">
+    <div class="container text-center">
+      <h4>&copy; Scott Workman 2025</h4>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script src="/js/base.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+
+  <title>Scott Workman</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="https://bootswatch.com/5/cosmo/bootstrap.css" rel="stylesheet">
+
+  <!-- Custom styles -->
+  <link href="/styles/base.css" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg fixed-top main-nav">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Scott Workman</a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-ex1-collapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="navbar-ex1-collapse">
+        <ul class="navbar-nav">
+          <li class="nav-item px-2">
+            <a class="nav-link" href="/research/">Research</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="/publications/">Publications</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="/resources/cv.pdf">CV</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="/contact/">Contact</a>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container -->
+  </nav>
+
+  <div class="container-md">
+    <div class="row">
+      <div class="col-md-12 mt-4 text-center">
+        <h1> Handling Image and Label Resolution Mismatch in Remote Sensing </h1>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-8 my-1 text-center">
+        <h2 class="text-body-secondary"> Scott Workman, Armin Hadzic, M. Usman Rafique </h1>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-8 my-2 text-center">
+          <a class="btn btn-dark rounded fs-5 mx-2" href="https://openaccess.thecvf.com/content/WACV2023/papers/Workman_Handling_Image_and_Label_Resolution_Mismatch_in_Remote_Sensing_WACV_2023_paper.pdf" role="button">
+            <i class="fa-regular fa-newspaper"></i> Paper
+          </a>
+          <a class="btn btn-dark rounded fs-5 mx-2" href="https://drive.google.com/file/d/18d-B--A-VZzeGDLta6esaoWg6_3NVlJw/view?usp&#x3D;sharing" role="button">
+            <i class="fa-solid fa-database"></i> Dataset
+          </a>
+      </div>
+    </div>
+
+    <div class="row my-3">
+      <div class="col">
+        <h2 class="text-primary"> Abstract </h2>
+        <div class="card border-secondary-subtle shadow p-3">
+          Though semantic segmentation has been heavily explored in vision literature, unique challenges remain in the remote sensing domain. One such challenge is how to handle resolution mismatch between overhead imagery and ground-truth label sources, due to differences in ground sample distance. To illustrate this problem, we introduce a new dataset and use it to showcase weaknesses inherent in existing strategies that naively upsample the target label to match the image resolution. Instead, we present a method that is supervised using low-resolution labels (without upsampling), but takes advantage of an exemplar set of high-resolution labels to guide the learning process. Our method incorporates region aggregation, adversarial learning, and self-supervised pretraining to generate fine-grained predictions, without requiring high-resolution annotations. Extensive experiments demonstrate the real-world applicability of our approach. 
+        </div>       
+      </div>
+    </div>
+     
+    <div class="row my-3">
+      <div class="col">
+        <h2 class="text-primary"> WACV 2023 Paper </h2>
+          <a href="https://openaccess.thecvf.com/content/WACV2023/papers/Workman_Handling_Image_and_Label_Resolution_Mismatch_in_Remote_Sensing_WACV_2023_paper.pdf">
+            <img src="/images/research/low2high/thumb0.jpg" class="img-fluid" alt="thumbnail">
+            <img src="/images/research/low2high/thumb1.jpg" class="img-fluid" alt="thumbnail">
+            <img src="/images/research/low2high/thumb2.jpg" class="img-fluid" alt="thumbnail">
+            <img src="/images/research/low2high/thumb3.jpg" class="img-fluid" alt="thumbnail">
+            <img src="/images/research/low2high/thumb4.jpg" class="img-fluid" alt="thumbnail">
+            <img src="/images/research/low2high/thumb5.jpg" class="img-fluid" alt="thumbnail">
+            <img src="/images/research/low2high/thumb6.jpg" class="img-fluid" alt="thumbnail">
+            <img src="/images/research/low2high/thumb7.jpg" class="img-fluid" alt="thumbnail">
+            <img src="/images/research/low2high/thumb8.jpg" class="img-fluid" alt="thumbnail">
+            <img src="/images/research/low2high/thumb9.jpg" class="img-fluid" alt="thumbnail">
+        </a>
+      </div>
+    </div>
+
+    <div class="row my-3">
+      <div class="col">
+        <h2 class="text-primary"> BibTeX </h2>
+				<div class="card">
+					<div class="card-body">
+            <pre class="mb-0">@inproceedings{workman2023handling,
+  author={Scott Workman and Armin Hadzic and M. Usman Rafique},
+  title={{Handling Image and Label Resolution Mismatch in Remote Sensing}},
+  booktitle={{IEEE Winter Conference on Applications of Computer Vision (WACV)}},
+  year=2023
+}
+</pre>
+					</div>
+				</div>
+      </div>
+    </div>
+      
+    <div class="row pb-3">
+      <div class="col">
+  
+        <p><h2 class="text-primary"> Oral Presentation </h2></p>
+<div class="ratio ratio-16x9">
+  <iframe src="https://www.youtube.com/embed/q8tvtchAq28?si=N7ZRRerqLQxYpSuv" allowfullscreen></iframe>
+</div>
+
+
+      </div>
+    </div> 
+  </div>
+ 
+
+  <footer id="footer" class="main-footer">
+    <div class="container text-center">
+      <h4>&copy; Scott Workman 2025</h4>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script src="/js/base.js"></script>
+
+</body>
+
+</html>
