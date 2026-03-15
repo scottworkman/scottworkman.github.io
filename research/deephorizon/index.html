@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+
+  <title>Scott Workman</title>
+
+  <!-- Tailwind CSS -->
+  <link href="/styles/style.min.css" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-white text-[#373a3c] font-sans">
+
+  <nav class="fixed top-0 inset-x-0 z-50 bg-white border-b border-[#e5e5e5] h-auto md:h-[80px] flex items-center shadow-[0_1px_0_rgba(255,255,255,0.1)] py-3 md:py-0">
+    <div class="container mx-auto px-3 flex flex-wrap md:flex-nowrap items-center justify-between w-full">
+      <div class="flex items-center justify-between w-full md:w-auto">
+        <a class="text-[#11569f] font-bold text-[21px] tracking-[5px] uppercase no-underline hover:text-[#11569f]" href="/">Scott Workman</a>
+        <button type="button" class="md:hidden p-2 text-gray-500 rounded border border-gray-200 hs-collapse-toggle focus:outline-none" aria-expanded="false" aria-controls="navbar-ex1-collapse" data-hs-collapse="#navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <svg class="hs-collapse-open:hidden max-w-none w-5 h-5" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <svg class="hs-collapse-open:block hidden max-w-none w-5 h-5" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+      <div id="navbar-ex1-collapse" class="hs-collapse hidden md:flex overflow-hidden transition-all duration-300 basis-full grow md:basis-auto mt-2 md:mt-0 md:ml-8">
+        <ul class="flex flex-col md:flex-row md:items-center list-none m-0 p-0">
+          <li class="px-4">
+            <a class="text-[#1478cb] hover:text-[#00346b] no-underline block py-2 md:py-0 bg-transparent" href="/research/">Research</a>
+          </li>
+          <li class="px-4">
+            <a class="text-[#1478cb] hover:text-[#00346b] no-underline block py-2 md:py-0 bg-transparent" href="/publications/">Publications</a>
+          </li>
+          <li class="px-4">
+            <a class="text-[#1478cb] hover:text-[#00346b] no-underline block py-2 md:py-0 bg-transparent" href="/resources/cv.pdf">CV</a>
+          </li>
+          <li class="px-4">
+            <a class="text-[#1478cb] hover:text-[#00346b] no-underline block py-2 md:py-0 bg-transparent" href="/contact/">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mx-auto px-3">
+    <div>
+      <div class="w-full mt-4 text-center">
+        <h1 class="text-[2.5rem] font-normal leading-tight mt-0 mb-2 text-[#373a3c]"> Horizon Lines in the Wild </h1>
+      </div>
+    </div>
+    <div class="flex md:justify-center">
+      <div class="w-full md:w-2/3 my-1 text-center">
+        <h2 class="text-[2rem] font-normal leading-[1.2] mt-0 mb-2 text-[#6c757d]"> Scott Workman, Menghua Zhai, Nathan Jacobs </h2>
+      </div>
+    </div>
+    <div class="flex md:justify-center">
+      <div class="w-full md:w-2/3 my-2 text-center">
+          <a class="inline-block px-4 py-2 bg-[#212529] text-white rounded hover:bg-[#424649] text-[1.25rem] no-underline mx-2 align-middle select-none border border-[#212529] transition-colors" href="https://arxiv.org/abs/1604.02129" role="button">
+            <i class="fa-regular fa-newspaper"></i> Paper
+          </a>
+          <a class="inline-block px-4 py-2 bg-[#212529] text-white rounded hover:bg-[#424649] text-[1.25rem] no-underline mx-2 align-middle select-none border border-[#212529] transition-colors" href="https://github.com/scottworkman/deephorizon/" role="button">
+            <i class="fa-solid fa-code"></i> Code
+          </a>
+          <a class="inline-block px-4 py-2 bg-[#212529] text-white rounded hover:bg-[#424649] text-[1.25rem] no-underline mx-2 align-middle select-none border border-[#212529] transition-colors" href="https://mvrl.cse.wustl.edu/datasets/hlw/" role="button">
+            <i class="fa-solid fa-database"></i> Dataset
+          </a>
+      </div>
+    </div>
+
+    <div class="my-3">
+      <div>
+        <h2 class="text-[#1478cb] text-[2rem] font-normal mt-0 mb-2 leading-[1.2]"> Abstract </h2>
+        <div class="relative flex flex-col min-w-0 break-words bg-white border border-[#e5e5e5] rounded shadow p-3">
+          The horizon line is an important contextual attribute for a wide variety of image understanding tasks. As such, many methods have been proposed to estimate its location from a single image. These methods typically require the image to contain specific cues, such as vanishing points, coplanar circles, and regular textures, thus limiting their real-world applicability. We introduce a large, realistic evaluation dataset, Horizon Lines in the Wild (HLW), containing natural images with labeled horizon lines. Using this dataset, we investigate the application of convolutional  neural networks for directly estimating the horizon line, without requiring any explicit geometric constraints or other special cues. An extensive evaluation shows that using our CNNs, either in isolation or in conjunction with a previous geometric approach, we achieve state-of-the-art results on the challenging HLW dataset and two existing benchmark datasets. 
+        </div>       
+      </div>
+    </div>
+     
+    <div class="my-3">
+      <div>
+        <h2 class="text-[#1478cb] text-[2rem] font-normal mt-0 mb-2 leading-[1.2]"> BMVC 2016 Paper </h2>
+          <a href="https://arxiv.org/abs/1604.02129" class="no-underline">
+            <img src="/images/research/deephorizon/thumb0.jpg" class="max-w-full h-auto inline-block" alt="thumbnail">
+            <img src="/images/research/deephorizon/thumb1.jpg" class="max-w-full h-auto inline-block" alt="thumbnail">
+            <img src="/images/research/deephorizon/thumb2.jpg" class="max-w-full h-auto inline-block" alt="thumbnail">
+            <img src="/images/research/deephorizon/thumb3.jpg" class="max-w-full h-auto inline-block" alt="thumbnail">
+            <img src="/images/research/deephorizon/thumb4.jpg" class="max-w-full h-auto inline-block" alt="thumbnail">
+            <img src="/images/research/deephorizon/thumb5.jpg" class="max-w-full h-auto inline-block" alt="thumbnail">
+            <img src="/images/research/deephorizon/thumb6.jpg" class="max-w-full h-auto inline-block" alt="thumbnail">
+            <img src="/images/research/deephorizon/thumb7.jpg" class="max-w-full h-auto inline-block" alt="thumbnail">
+            <img src="/images/research/deephorizon/thumb8.jpg" class="max-w-full h-auto inline-block" alt="thumbnail">
+            <img src="/images/research/deephorizon/thumb9.jpg" class="max-w-full h-auto inline-block" alt="thumbnail">
+            <img src="/images/research/deephorizon/thumb10.jpg" class="max-w-full h-auto inline-block" alt="thumbnail">
+            <img src="/images/research/deephorizon/thumb11.jpg" class="max-w-full h-auto inline-block" alt="thumbnail">
+        </a>
+      </div>
+    </div>
+
+    <div class="my-3">
+      <div>
+        <h2 class="text-[#1478cb] text-[2rem] font-normal mt-0 mb-2 leading-[1.2]"> BibTeX </h2>
+				<div class="relative flex flex-col min-w-0 break-words bg-[#f8f9fa] border border-[#e5e5e5] rounded overflow-auto">
+					<div class="flex-auto p-4">
+            <pre class="mb-0 text-sm whitespace-pre-wrap font-mono">@inproceedings{workman2016horizon,
+    author={Scott Workman and Menghua Zhai and Nathan Jacobs},
+    title={Horizon Lines in the Wild},
+    booktitle={{British Machine Vision Conference (BMVC)}},
+    year=2016,
+}
+</pre>
+					</div>
+				</div>
+      </div>
+    </div>
+      
+    <div class="pb-3">
+      <div class="prose max-w-none">
+  
+        
+
+      </div>
+    </div> 
+  </div>
+ 
+
+  <footer id="footer" class="bg-[#1478cb] text-white absolute bottom-0 w-full h-[80px] pt-[25px]">
+    <div class="container mx-auto px-3 text-center">
+      <h4 class="font-normal text-[1.5rem] mt-0 mb-2 leading-[1.2] text-white">&copy; Scott Workman 2026</h4>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script src="/js/base.js"></script>
+
+</body>
+
+</html>

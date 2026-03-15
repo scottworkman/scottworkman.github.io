@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+
+  <title>Scott Workman</title>
+
+  <!-- Tailwind CSS -->
+  <link href="/styles/style.min.css" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-white text-[#373a3c] font-sans">
+
+  <nav class="fixed top-0 inset-x-0 z-50 bg-white border-b border-[#e5e5e5] h-auto md:h-[80px] flex items-center shadow-[0_1px_0_rgba(255,255,255,0.1)] py-3 md:py-0">
+    <div class="container mx-auto px-3 flex flex-wrap md:flex-nowrap items-center justify-between w-full">
+      <div class="flex items-center justify-between w-full md:w-auto">
+        <a class="text-[#11569f] font-bold text-[21px] tracking-[5px] uppercase no-underline hover:text-[#11569f]" href="/">Scott Workman</a>
+        <button type="button" class="md:hidden p-2 text-gray-500 rounded border border-gray-200 hs-collapse-toggle focus:outline-none" aria-expanded="false" aria-controls="navbar-ex1-collapse" data-hs-collapse="#navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <svg class="hs-collapse-open:hidden max-w-none w-5 h-5" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <svg class="hs-collapse-open:block hidden max-w-none w-5 h-5" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+      <div id="navbar-ex1-collapse" class="hs-collapse hidden md:flex overflow-hidden transition-all duration-300 basis-full grow md:basis-auto mt-2 md:mt-0 md:ml-8">
+        <ul class="flex flex-col md:flex-row md:items-center list-none m-0 p-0">
+          <li class="px-4">
+            <a class="text-[#1478cb] hover:text-[#00346b] no-underline block py-2 md:py-0 bg-transparent" href="/research/">Research</a>
+          </li>
+          <li class="px-4">
+            <a class="text-[#1478cb] hover:text-[#00346b] no-underline block py-2 md:py-0 bg-transparent" href="/publications/">Publications</a>
+          </li>
+          <li class="px-4">
+            <a class="text-[#1478cb] hover:text-[#00346b] no-underline block py-2 md:py-0 bg-transparent" href="/resources/cv.pdf">CV</a>
+          </li>
+          <li class="px-4">
+            <a class="text-[#1478cb] hover:text-[#00346b] no-underline block py-2 md:py-0 bg-transparent" href="/contact/">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Masthead -->
+  <div class="h-[250px] w-full bg-[#e6f2fa] bg-[url('/images/uky_pano_repeat.jpg')] bg-center bg-no-repeat bg-[length:auto_100%] relative"></div>
+
+  <div class="container mx-auto px-3">
+    <div class="p-4">
+      <div class="w-full bg-[#f8f9fa] border border-[rgb(175,176,177)] relative flex flex-col min-w-0 break-words">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 p-2 lg:items-center">
+          <!-- Portrait -->
+          <div class="lg:col-span-4 text-center md:pb-3 lg:pb-0">
+            <img src="/images/portrait.jpg" class="max-w-full h-auto rounded p-2 mx-auto" alt="portrait">
+          </div>
+
+          <!-- Bio -->
+          <div class="md:col-span-1 lg:col-span-4 px-2">
+            <h2><i class="fa-solid fa-id-card pt-3 pt-sm-0"></i> Who am I?</h2>
+            <p>
+              I'm a researcher specializing in computer vision, machine
+              learning, and generative AI.
+            </p>
+            <h2><i class="fa-solid fa-school pt-lg-4"></i> Education</h2>
+            <p>
+              I received my Ph.D. from the
+              <a href="https://engr.uky.edu/academics/departments/cs">Computer
+              Science Department</a> at the University of Kentucky in 2018. During
+              this time, I worked as a Research Assistant in the
+              <a href="https://mvrl.cse.wustl.edu/">Multimodal Vision Research Laboratory</a>
+              under the supervision of <a href="https://jacobsn.github.io/">Dr. Nathan Jacobs</a>.
+            </p>
+          </div>
+
+          <!-- Research Overview -->
+          <div class="md:col-span-1 lg:col-span-4 px-2">
+            <h2><i class="fa-solid fa-image"></i> Research</h2>
+            <p>
+              My work spans a variety of areas, including view
+              synthesis, multimodal fusion, pose estimation, and
+              autonomous navigation.  I am particularly interested in
+              developing methods for combining visual data from
+              multiple sensors and viewpoints with other modalities to
+              create richer, more accurate models of the environment.
+              Additionally, I explore innovative methods for
+              leveraging image metadata——such as location and time
+              (i.e., the geo-temporal context of an image)—to improve
+              the performance and reliability of computer vision
+              systems.  You can learn more by browsing some of my
+              recent <a href="/publications">publications</a> or
+              checking out my <a href="/resources/cv.pdf">CV</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pb-4">
+      <!-- News -->
+      <div class="w-full md:w-2/3 mx-auto">
+        <h2><i class="fa-solid fa-newspaper"></i> Recent News</h2>
+        <div class="flex flex-col border border-[#e5e5e5] rounded">
+            <div class="px-4 py-3 bg-white border-b border-[#e5e5e5] last:border-b-0">
+              <div class="grid grid-cols-12 gap-x-6">
+                <div class="col-span-4 sm:col-span-3">12-19-2025</div>
+                <div class="col-span-8 sm:col-span-9">area chair for ECCV 2026</div>
+              </div>
+            </div>
+            <div class="px-4 py-3 bg-white border-b border-[#e5e5e5] last:border-b-0">
+              <div class="grid grid-cols-12 gap-x-6">
+                <div class="col-span-4 sm:col-span-3">11-19-2025</div>
+                <div class="col-span-8 sm:col-span-9">area chair for ICML 2026</div>
+              </div>
+            </div>
+            <div class="px-4 py-3 bg-white border-b border-[#e5e5e5] last:border-b-0">
+              <div class="grid grid-cols-12 gap-x-6">
+                <div class="col-span-4 sm:col-span-3">09-26-2025</div>
+                <div class="col-span-8 sm:col-span-9">lead area chair for CVPR 2026</div>
+              </div>
+            </div>
+            <div class="px-4 py-3 bg-white border-b border-[#e5e5e5] last:border-b-0">
+              <div class="grid grid-cols-12 gap-x-6">
+                <div class="col-span-4 sm:col-span-3">06-18-2025</div>
+                <div class="col-span-8 sm:col-span-9">area chair for WACV 2026</div>
+              </div>
+            </div>
+            <div class="px-4 py-3 bg-white border-b border-[#e5e5e5] last:border-b-0">
+              <div class="grid grid-cols-12 gap-x-6">
+                <div class="col-span-4 sm:col-span-3">05-01-2025</div>
+                <div class="col-span-8 sm:col-span-9">journal article accepted to Transactions on Machine Learning Research</div>
+              </div>
+            </div>
+            <div class="px-4 py-3 bg-white border-b border-[#e5e5e5] last:border-b-0">
+              <div class="grid grid-cols-12 gap-x-6">
+                <div class="col-span-4 sm:col-span-3">02-17-2025</div>
+                <div class="col-span-8 sm:col-span-9">area chair for NeurIPS 2025</div>
+              </div>
+            </div>
+            <div class="px-4 py-3 bg-white border-b border-[#e5e5e5] last:border-b-0">
+              <div class="grid grid-cols-12 gap-x-6">
+                <div class="col-span-4 sm:col-span-3">12-14-2024</div>
+                <div class="col-span-8 sm:col-span-9">area chair for ICML 2025</div>
+              </div>
+            </div>
+            <div class="px-4 py-3 bg-white border-b border-[#e5e5e5] last:border-b-0">
+              <div class="grid grid-cols-12 gap-x-6">
+                <div class="col-span-4 sm:col-span-3">12-02-2024</div>
+                <div class="col-span-8 sm:col-span-9">area chair for ICCV 2025</div>
+              </div>
+            </div>
+            <div class="px-4 py-3 bg-white border-b border-[#e5e5e5] last:border-b-0">
+              <div class="grid grid-cols-12 gap-x-6">
+                <div class="col-span-4 sm:col-span-3">10-04-2024</div>
+                <div class="col-span-8 sm:col-span-9">presented paper at ECCV (Milan, Italy)</div>
+              </div>
+            </div>
+            <div class="px-4 py-3 bg-white border-b border-[#e5e5e5] last:border-b-0">
+              <div class="grid grid-cols-12 gap-x-6">
+                <div class="col-span-4 sm:col-span-3">09-13-2024</div>
+                <div class="col-span-8 sm:col-span-9">area chair for CVPR 2025</div>
+              </div>
+            </div>
+            <div class="px-4 py-3 bg-white border-b border-[#e5e5e5] last:border-b-0">
+              <div class="grid grid-cols-12 gap-x-6">
+                <div class="col-span-4 sm:col-span-3">07-01-2024</div>
+                <div class="col-span-8 sm:col-span-9">paper accepted to ECCV 2024</div>
+              </div>
+            </div>
+            <div class="px-4 py-3 bg-white border-b border-[#e5e5e5] last:border-b-0">
+              <div class="grid grid-cols-12 gap-x-6">
+                <div class="col-span-4 sm:col-span-3">06-21-2024</div>
+                <div class="col-span-8 sm:col-span-9">area chair for WACV 2025</div>
+              </div>
+            </div>
+            <div class="px-4 py-3 bg-white border-b border-[#e5e5e5] last:border-b-0">
+              <div class="grid grid-cols-12 gap-x-6">
+                <div class="col-span-4 sm:col-span-3">03-27-2024</div>
+                <div class="col-span-8 sm:col-span-9">area chair for NeurIPS 2024</div>
+              </div>
+            </div>
+            <div class="px-4 py-3 bg-white border-b border-[#e5e5e5] last:border-b-0">
+              <div class="grid grid-cols-12 gap-x-6">
+                <div class="col-span-4 sm:col-span-3">12-10-2023</div>
+                <div class="col-span-8 sm:col-span-9">recognized as an outstanding reviewer for NeurIPS 2023</div>
+              </div>
+            </div>
+            <div class="px-4 py-3 bg-white border-b border-[#e5e5e5] last:border-b-0">
+              <div class="grid grid-cols-12 gap-x-6">
+                <div class="col-span-4 sm:col-span-3">10-24-2023</div>
+                <div class="col-span-8 sm:col-span-9">paper accepted to WACV 2024</div>
+              </div>
+            </div>
+            <div class="px-4 py-3 bg-white border-b border-[#e5e5e5] last:border-b-0">
+              <div class="text-center">
+                <a href="/news/">older news</a>
+              </div>
+              </div>
+            </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+       
+
+  <footer id="footer" class="bg-[#1478cb] text-white absolute bottom-0 w-full h-[80px] pt-[25px]">
+    <div class="container mx-auto px-3 text-center">
+      <h4 class="font-normal text-[1.5rem] mt-0 mb-2 leading-[1.2] text-white">&copy; Scott Workman 2026</h4>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script src="/js/base.js"></script>
+
+</body>
+
+</html>
