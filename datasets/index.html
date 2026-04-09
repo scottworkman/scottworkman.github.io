@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Scott Workman — Research Scientist specializing in computer vision, machine learning, and generative AI.">
+  <meta name="author" content="Scott Workman">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+
+  <title>Scott Workman</title>
+
+  <!-- Prevent FOUC on dark mode -->
+  <script>
+    // This code should be added to <head>.
+    // It's used to prevent page load glitches.
+    const html = document.querySelector('html');
+    const isLightOrAuto = localStorage.getItem('hs_theme') === 'light' || (localStorage.getItem('hs_theme') === 'auto' && !window.matchMedia('(prefers-color-scheme: dark)').matches);
+    const isDarkOrAuto = localStorage.getItem('hs_theme') === 'dark' || (localStorage.getItem('hs_theme') === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+    if (isLightOrAuto && html.classList.contains('dark')) html.classList.remove('dark');
+    else if (isDarkOrAuto && html.classList.contains('light')) html.classList.remove('light');
+    else if (isDarkOrAuto && !html.classList.contains('dark')) html.classList.add('dark');
+    else if (isLightOrAuto && !html.classList.contains('light')) html.classList.add('light');
+
+  </script>
+
+  <!-- Tailwind CSS -->
+  <link href="/styles/style.min.css" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="flex flex-col min-h-[calc(100dvh-72px)] mt-[72px]">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 inset-x-0 z-50 bg-white/80 dark:bg-gray-950/80 backdrop-blur-lg border-b border-gray-200/60 dark:border-gray-800/60 h-[72px] flex items-center">
+    <div class="container mx-auto flex items-center justify-between">
+      <div class="flex items-center justify-between w-full md:w-auto">
+        <a class="text-gray-900 dark:text-white font-bold text-lg tracking-[4px] uppercase no-underline hover:no-underline hover:text-gray-900 dark:hover:text-white" href="/">Scott Workman</a>
+        <div class="md:hidden flex items-center gap-3">
+          <button type="button" class="hs-dark-mode-active:hidden block hs-dark-mode font-medium text-foreground rounded-full hover:bg-surface-hover focus:outline-hidden focus:bg-surface-focus" data-hs-theme-click-value="dark">
+            <span class="group inline-flex shrink-0 justify-center items-center size-9">
+              <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+              </svg>
+            </span>
+          </button>
+          <button type="button" class="hs-dark-mode-active:block hidden hs-dark-mode font-medium text-foreground rounded-full hover:bg-surface-hover focus:outline-hidden focus:bg-surface-focus" data-hs-theme-click-value="light">
+            <span class="group inline-flex shrink-0 justify-center items-center size-9">
+              <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2" />
+                <path d="M12 20v2" />
+                <path d="m4.93 4.93 1.41 1.41" />
+                <path d="m17.66 17.66 1.41 1.41" />
+                <path d="M2 12h2" />
+                <path d="M20 12h2" />
+                <path d="m6.34 17.66-1.41 1.41" />
+                <path d="m19.07 4.93-1.41 1.41" />
+              </svg>
+            </span>
+          </button>
+          <button type="button" class="p-2 text-gray-500 dark:text-gray-400 rounded-lg border border-gray-200 dark:border-gray-700 hs-collapse-toggle" aria-expanded="false" aria-controls="navbar-collapse" data-hs-collapse="#navbar-collapse" aria-label="Toggle navigation">
+            <svg class="hs-collapse-open:hidden w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg class="hs-collapse-open:block hidden w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div id="navbar-collapse" class="hs-collapse hidden md:flex overflow-hidden transition-all duration-300 absolute md:relative top-[72px] md:top-0 left-0 w-full md:w-auto md:grow md:ml-8 bg-white dark:bg-gray-950 md:bg-transparent md:dark:bg-transparent shadow-xl md:shadow-none border-b md:border-none border-gray-200/60 dark:border-gray-800/60 transition-all duration-300">
+        <ul class="flex flex-col md:flex-row md:items-center list-none m-0 p-4 md:p-0 md:ml-auto gap-1">
+          <li><a class="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-brand dark:hover:text-brand-light no-underline block py-3 md:py-0 px-3 transition-colors" href="/research/">Research</a></li>
+          <li><a class="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-brand dark:hover:text-brand-light no-underline block py-3 md:py-0 px-3 transition-colors" href="/publications/">Publications</a></li>
+          <li><a class="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-brand dark:hover:text-brand-light no-underline block py-3 md:py-0 px-3 transition-colors" href="/datasets/">Datasets</a></li>
+          <li><a class="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-brand dark:hover:text-brand-light no-underline block py-3 md:py-0 px-3 transition-colors" href="/labs/">Labs</a></li>
+          <li><a class="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-brand dark:hover:text-brand-light no-underline block py-3 md:py-0 px-3 transition-colors" href="/resources/cv.pdf">CV</a></li>
+          <li><a class="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-brand dark:hover:text-brand-light no-underline block py-3 md:py-0 px-3 transition-colors" href="/contact/">Contact</a></li>
+          <li class="hidden md:flex items-center pl-3 ml-2 border-l border-gray-200 dark:border-gray-700">
+            <button type="button" class="hs-dark-mode-active:hidden block hs-dark-mode font-medium text-foreground rounded-full hover:bg-surface-hover focus:outline-hidden focus:bg-surface-focus" data-hs-theme-click-value="dark">
+              <span class="group inline-flex shrink-0 justify-center items-center size-9">
+                <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                </svg>
+              </span>
+            </button>
+            <button type="button" class="hs-dark-mode-active:block hidden hs-dark-mode font-medium text-foreground rounded-full hover:bg-surface-hover focus:outline-hidden focus:bg-surface-focus" data-hs-theme-click-value="light">
+              <span class="group inline-flex shrink-0 justify-center items-center size-9">
+                <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="4" />
+                  <path d="M12 2v2" />
+                  <path d="M12 20v2" />
+                  <path d="m4.93 4.93 1.41 1.41" />
+                  <path d="m17.66 17.66 1.41 1.41" />
+                  <path d="M2 12h2" />
+                  <path d="M20 12h2" />
+                  <path d="m6.34 17.66-1.41 1.41" />
+                  <path d="m19.07 4.93-1.41 1.41" />
+                </svg>
+              </span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Page Header / Hero -->
+  <section class="relative py-10 overflow-hidden border-b border-gray-200 dark:border-gray-800 mb-10">
+    <div class="absolute inset-0 z-0 bg-gray-50 dark:bg-gray-950">
+      <!-- Subtle background map/image matching home page if available, otherwise stylish gradient -->
+      <img src="/images/hero_background.jpg" alt="" class="absolute inset-0 w-full h-full object-cover opacity-10 dark:opacity-10 grayscale">
+      <div class="absolute inset-0 bg-gradient-to-b from-white/80 via-transparent to-white dark:from-gray-950/80 dark:via-transparent dark:to-gray-950 pointer-events-none"></div>
+    </div>
+
+    <div class="container mx-auto relative z-10">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 tracking-tight mb-3">Datasets</h1>
+      <p class="text-gray-600 dark:text-gray-400 max-w-3xl mb-0">
+        Datasets curated through my research.
+      </p>
+    </div>
+  </section>
+
+
+  <div class="container mx-auto">
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <a href="/datasets/cvusa/"
+        class="group flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white no-underline transition-all duration-300 hover:no-underline hover:shadow-lg dark:border-gray-800 dark:bg-gray-900 dark:hover:shadow-black/20">
+        <div class="aspect-[2/1] overflow-hidden bg-gray-100 dark:bg-gray-800">
+          <img src="/images/datasets/cvusa.jpg"
+            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            alt="Cross-View USA" />
+        </div>
+        <div class="flex flex-grow flex-col p-5">
+          <h3
+            class="group-hover:text-brand dark:group-hover:text-brand-light mb-1 text-lg font-bold tracking-tight text-gray-900 transition-colors dark:text-white">
+            Cross-View USA (CVUSA)
+          </h3>
+          <p
+            class="text-brand dark:text-brand-light mb-4 line-clamp-2 min-h-[2rem] text-xs font-semibold tracking-wider uppercase">
+            Image Geolocalization, Autonomous Navigation, Image Synthesis
+          </p>
+          <p class="mb-0 line-clamp-4 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+            A large-scale benchmark supporting multiple tasks including image geolocalization, autonomous navigation, and image synthesis, featuring 1.58 million matched ground-to-aerial image pairs.
+
+          </p>
+        </div>
+      </a>
+      <a href="/datasets/hlw/"
+        class="group flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white no-underline transition-all duration-300 hover:no-underline hover:shadow-lg dark:border-gray-800 dark:bg-gray-900 dark:hover:shadow-black/20">
+        <div class="aspect-[2/1] overflow-hidden bg-gray-100 dark:bg-gray-800">
+          <img src="/images/datasets/hlw.jpg"
+            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            alt="Horizon Lines in the Wild" />
+        </div>
+        <div class="flex flex-grow flex-col p-5">
+          <h3
+            class="group-hover:text-brand dark:group-hover:text-brand-light mb-1 text-lg font-bold tracking-tight text-gray-900 transition-colors dark:text-white">
+            Horizon Lines in the Wild (HLW)
+          </h3>
+          <p
+            class="text-brand dark:text-brand-light mb-4 line-clamp-2 min-h-[2rem] text-xs font-semibold tracking-wider uppercase">
+            Large-Scale Geometric Scene Understanding
+          </p>
+          <p class="mb-0 line-clamp-4 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+            A large-scale dataset of natural images annotated with horizon line positions, designed for training and evaluating geometric estimation methods.
+
+          </p>
+        </div>
+      </a>
+      <a href="/datasets/brooklyn-queens/"
+        class="group flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white no-underline transition-all duration-300 hover:no-underline hover:shadow-lg dark:border-gray-800 dark:bg-gray-900 dark:hover:shadow-black/20">
+        <div class="aspect-[2/1] overflow-hidden bg-gray-100 dark:bg-gray-800">
+          <img src="/images/datasets/brooklyn-queens.jpg"
+            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            alt="Brooklyn &amp; Queens" />
+        </div>
+        <div class="flex flex-grow flex-col p-5">
+          <h3
+            class="group-hover:text-brand dark:group-hover:text-brand-light mb-1 text-lg font-bold tracking-tight text-gray-900 transition-colors dark:text-white">
+            Brooklyn &amp; Queens (B&amp;Q)
+          </h3>
+          <p
+            class="text-brand dark:text-brand-light mb-4 line-clamp-2 min-h-[2rem] text-xs font-semibold tracking-wider uppercase">
+            Near/Remote Sensing
+          </p>
+          <p class="mb-0 line-clamp-4 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+            A large-scale dataset for urban semantic segmentation, featuring paired high-resolution overhead and ground-level street-view imagery.
+
+          </p>
+        </div>
+      </a>
+      <a href="/datasets/dts/"
+        class="group flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white no-underline transition-all duration-300 hover:no-underline hover:shadow-lg dark:border-gray-800 dark:bg-gray-900 dark:hover:shadow-black/20">
+        <div class="aspect-[2/1] overflow-hidden bg-gray-100 dark:bg-gray-800">
+          <img src="/images/datasets/dts.jpg"
+            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            alt="Dynamic Traffic Speeds" />
+        </div>
+        <div class="flex flex-grow flex-col p-5">
+          <h3
+            class="group-hover:text-brand dark:group-hover:text-brand-light mb-1 text-lg font-bold tracking-tight text-gray-900 transition-colors dark:text-white">
+            Dynamic Traffic Speeds (DTS)
+          </h3>
+          <p
+            class="text-brand dark:text-brand-light mb-4 line-clamp-2 min-h-[2rem] text-xs font-semibold tracking-wider uppercase">
+            Multi-City Spatio-Temporal Traffic Modeling
+          </p>
+          <p class="mb-0 line-clamp-4 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+            A multi-city dataset linking high-resolution overhead imagery with historical traffic speed records for New York City and Cincinnati, supporting city-scale flow analysis and location adaptation.
+
+          </p>
+        </div>
+      </a>
+      <a href="/datasets/hco/"
+        class="group flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white no-underline transition-all duration-300 hover:no-underline hover:shadow-lg dark:border-gray-800 dark:bg-gray-900 dark:hover:shadow-black/20">
+        <div class="aspect-[2/1] overflow-hidden bg-gray-100 dark:bg-gray-800">
+          <img src="/images/datasets/hco.jpg"
+            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            alt="HoliCity-Overhead" />
+        </div>
+        <div class="flex flex-grow flex-col p-5">
+          <h3
+            class="group-hover:text-brand dark:group-hover:text-brand-light mb-1 text-lg font-bold tracking-tight text-gray-900 transition-colors dark:text-white">
+            HoliCity-Overhead (HCO)
+          </h3>
+          <p
+            class="text-brand dark:text-brand-light mb-4 line-clamp-2 min-h-[2rem] text-xs font-semibold tracking-wider uppercase">
+            Geospatially Augmented Depth Estimation
+          </p>
+          <p class="mb-0 line-clamp-4 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+            A dataset for augmenting monocular depth estimation with geospatial context, combining ground-level images with co-located overhead imagery and geographic metadata.
+
+          </p>
+        </div>
+      </a>
+      <a href="/datasets/low2high/"
+        class="group flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white no-underline transition-all duration-300 hover:no-underline hover:shadow-lg dark:border-gray-800 dark:bg-gray-900 dark:hover:shadow-black/20">
+        <div class="aspect-[2/1] overflow-hidden bg-gray-100 dark:bg-gray-800">
+          <img src="/images/datasets/low2high.jpg"
+            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            alt="Low2High" />
+        </div>
+        <div class="flex flex-grow flex-col p-5">
+          <h3
+            class="group-hover:text-brand dark:group-hover:text-brand-light mb-1 text-lg font-bold tracking-tight text-gray-900 transition-colors dark:text-white">
+            Low2High (L2H)
+          </h3>
+          <p
+            class="text-brand dark:text-brand-light mb-4 line-clamp-2 min-h-[2rem] text-xs font-semibold tracking-wider uppercase">
+            Handling Resolution Mismatch
+          </p>
+          <p class="mb-0 line-clamp-4 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+            A large-scale benchmark for studying resolution mismatch, featuring 1m/pixel overhead imagery paired with coarse 30m/pixel ground-truth labels across 100,000 square miles.
+
+          </p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="mt-auto h-16"></div>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-200 dark:border-gray-800">
+    <div class="container mx-auto py-10">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="text-center md:text-left">
+          <p class="text-sm font-semibold text-gray-900 dark:text-gray-100">&copy; Scott Workman 2026</p>
+          <p class="text-xs text-gray-500 dark:text-gray-500 mb-0">Computer Vision &middot; Machine Learning &middot; Generative AI</p>
+        </div>
+        <div class="flex items-center gap-5">
+          <a href="https://scholar.google.com/citations?user=uhHXJzMAAAAJ" class="text-gray-400 hover:text-brand dark:hover:text-brand-light transition-colors" aria-label="Google Scholar">
+            <i class="fa-solid fa-graduation-cap text-lg"></i>
+          </a>
+          <a href="https://github.com/scottworkman" class="text-gray-400 hover:text-brand dark:hover:text-brand-light transition-colors" aria-label="GitHub">
+            <i class="fa-brands fa-github text-lg"></i>
+          </a>
+          <a href="https://orcid.org/0000-0002-7145-7484" class="text-gray-400 hover:text-brand dark:hover:text-brand-light transition-colors" aria-label="ORCID">
+            <i class="fa-brands fa-orcid text-lg"></i>
+          </a>
+          <a href="/contact/" class="text-gray-400 hover:text-brand dark:hover:text-brand-light transition-colors" aria-label="Email">
+            <i class="fa-solid fa-envelope text-lg"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script src="/js/base.js"></script>
+  <script src="/js/preline.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Scott Workman — Research Scientist specializing in computer vision, machine learning, and generative AI.">
+  <meta name="author" content="Scott Workman">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+
+  <title>Scott Workman</title>
+
+  <!-- Prevent FOUC on dark mode -->
+  <script>
+    // This code should be added to <head>.
+    // It's used to prevent page load glitches.
+    const html = document.querySelector('html');
+    const isLightOrAuto = localStorage.getItem('hs_theme') === 'light' || (localStorage.getItem('hs_theme') === 'auto' && !window.matchMedia('(prefers-color-scheme: dark)').matches);
+    const isDarkOrAuto = localStorage.getItem('hs_theme') === 'dark' || (localStorage.getItem('hs_theme') === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+    if (isLightOrAuto && html.classList.contains('dark')) html.classList.remove('dark');
+    else if (isDarkOrAuto && html.classList.contains('light')) html.classList.remove('light');
+    else if (isDarkOrAuto && !html.classList.contains('dark')) html.classList.add('dark');
+    else if (isLightOrAuto && !html.classList.contains('light')) html.classList.add('light');
+
+  </script>
+
+  <!-- Tailwind CSS -->
+  <link href="/styles/style.min.css" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="flex flex-col min-h-[calc(100dvh-72px)] mt-[72px]">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 inset-x-0 z-50 bg-white/80 dark:bg-gray-950/80 backdrop-blur-lg border-b border-gray-200/60 dark:border-gray-800/60 h-[72px] flex items-center">
+    <div class="container mx-auto flex items-center justify-between">
+      <div class="flex items-center justify-between w-full md:w-auto">
+        <a class="text-gray-900 dark:text-white font-bold text-lg tracking-[4px] uppercase no-underline hover:no-underline hover:text-gray-900 dark:hover:text-white" href="/">Scott Workman</a>
+        <div class="md:hidden flex items-center gap-3">
+          <button type="button" class="hs-dark-mode-active:hidden block hs-dark-mode font-medium text-foreground rounded-full hover:bg-surface-hover focus:outline-hidden focus:bg-surface-focus" data-hs-theme-click-value="dark">
+            <span class="group inline-flex shrink-0 justify-center items-center size-9">
+              <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+              </svg>
+            </span>
+          </button>
+          <button type="button" class="hs-dark-mode-active:block hidden hs-dark-mode font-medium text-foreground rounded-full hover:bg-surface-hover focus:outline-hidden focus:bg-surface-focus" data-hs-theme-click-value="light">
+            <span class="group inline-flex shrink-0 justify-center items-center size-9">
+              <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2" />
+                <path d="M12 20v2" />
+                <path d="m4.93 4.93 1.41 1.41" />
+                <path d="m17.66 17.66 1.41 1.41" />
+                <path d="M2 12h2" />
+                <path d="M20 12h2" />
+                <path d="m6.34 17.66-1.41 1.41" />
+                <path d="m19.07 4.93-1.41 1.41" />
+              </svg>
+            </span>
+          </button>
+          <button type="button" class="p-2 text-gray-500 dark:text-gray-400 rounded-lg border border-gray-200 dark:border-gray-700 hs-collapse-toggle" aria-expanded="false" aria-controls="navbar-collapse" data-hs-collapse="#navbar-collapse" aria-label="Toggle navigation">
+            <svg class="hs-collapse-open:hidden w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg class="hs-collapse-open:block hidden w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div id="navbar-collapse" class="hs-collapse hidden md:flex overflow-hidden transition-all duration-300 absolute md:relative top-[72px] md:top-0 left-0 w-full md:w-auto md:grow md:ml-8 bg-white dark:bg-gray-950 md:bg-transparent md:dark:bg-transparent shadow-xl md:shadow-none border-b md:border-none border-gray-200/60 dark:border-gray-800/60 transition-all duration-300">
+        <ul class="flex flex-col md:flex-row md:items-center list-none m-0 p-4 md:p-0 md:ml-auto gap-1">
+          <li><a class="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-brand dark:hover:text-brand-light no-underline block py-3 md:py-0 px-3 transition-colors" href="/research/">Research</a></li>
+          <li><a class="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-brand dark:hover:text-brand-light no-underline block py-3 md:py-0 px-3 transition-colors" href="/publications/">Publications</a></li>
+          <li><a class="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-brand dark:hover:text-brand-light no-underline block py-3 md:py-0 px-3 transition-colors" href="/datasets/">Datasets</a></li>
+          <li><a class="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-brand dark:hover:text-brand-light no-underline block py-3 md:py-0 px-3 transition-colors" href="/labs/">Labs</a></li>
+          <li><a class="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-brand dark:hover:text-brand-light no-underline block py-3 md:py-0 px-3 transition-colors" href="/resources/cv.pdf">CV</a></li>
+          <li><a class="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-brand dark:hover:text-brand-light no-underline block py-3 md:py-0 px-3 transition-colors" href="/contact/">Contact</a></li>
+          <li class="hidden md:flex items-center pl-3 ml-2 border-l border-gray-200 dark:border-gray-700">
+            <button type="button" class="hs-dark-mode-active:hidden block hs-dark-mode font-medium text-foreground rounded-full hover:bg-surface-hover focus:outline-hidden focus:bg-surface-focus" data-hs-theme-click-value="dark">
+              <span class="group inline-flex shrink-0 justify-center items-center size-9">
+                <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                </svg>
+              </span>
+            </button>
+            <button type="button" class="hs-dark-mode-active:block hidden hs-dark-mode font-medium text-foreground rounded-full hover:bg-surface-hover focus:outline-hidden focus:bg-surface-focus" data-hs-theme-click-value="light">
+              <span class="group inline-flex shrink-0 justify-center items-center size-9">
+                <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="4" />
+                  <path d="M12 2v2" />
+                  <path d="M12 20v2" />
+                  <path d="m4.93 4.93 1.41 1.41" />
+                  <path d="m17.66 17.66 1.41 1.41" />
+                  <path d="M2 12h2" />
+                  <path d="M20 12h2" />
+                  <path d="m6.34 17.66-1.41 1.41" />
+                  <path d="m19.07 4.93-1.41 1.41" />
+                </svg>
+              </span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <article class="relative flex-1 bg-white transition-colors duration-300 dark:bg-gray-950">
+    <!-- Hero Section: Identity & Dashboard -->
+    <section
+      class="border-b border-gray-100 bg-gray-50/50 dark:border-gray-800/80 dark:bg-gray-900/40">
+      <div class="relative container pt-6 pb-8 lg:pt-10 lg:pb-10">
+        <!-- Balanced Header: Identity & Stats (Left) | Image & Actions (Right) -->
+        <header>
+          <div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-10">
+            <!-- Left Column: Identity & Analytics (7/12) -->
+            <div class="space-y-5 md:space-y-6 lg:col-span-7">
+              <!-- Identity -->
+              <div class="space-y-4">
+                <div class="flex flex-wrap items-center gap-3">
+                  <span
+                    class="bg-brand shadow-brand/20 inline-flex items-center rounded-full px-2.5 py-0.5 text-[10px] font-bold tracking-widest text-white uppercase shadow-sm">
+                    CVUSA
+                  </span>
+                  <span
+                    class="text-[10px] font-bold tracking-widest text-gray-400 uppercase opacity-80 dark:text-gray-500">Research
+                    Dataset</span>
+                </div>
+                <h1
+                  class="text-3xl leading-[1.1] font-extrabold tracking-tight text-gray-900 md:text-4xl lg:text-5xl dark:text-white">
+                  Cross-View USA
+                </h1>
+                <p
+                  class="text-brand dark:text-brand-light max-w-2xl text-lg leading-relaxed font-medium opacity-90 lg:text-xl">
+                  Image Geolocalization, Autonomous Navigation, Image Synthesis
+                </p>
+              </div>
+
+              <!-- Overview -->
+              <div class="max-w-3xl">
+                <p
+                  class="border-brand/30 border-l-2 pl-6 text-base leading-relaxed font-medium text-gray-600 italic lg:text-lg dark:text-gray-400">
+                  A large-scale benchmark supporting multiple tasks including image geolocalization, autonomous navigation, and image synthesis, featuring 1.58 million matched ground-to-aerial image pairs.
+
+                </p>
+              </div>
+
+              <!-- Integrated Stats Grid -->
+              <div class="grid grid-cols-2 gap-4 p-2 sm:grid-cols-4">
+                <div
+                  class="group hover:shadow-brand/5 hover:border-brand/20 flex min-h-[90px] flex-col items-center rounded-2xl border border-gray-100 bg-white/50 p-4 text-center backdrop-blur-sm transition-all duration-300 hover:shadow-lg dark:border-gray-800 dark:bg-gray-900/40">
+                  <p
+                    class="group-hover:text-brand mb-1 w-full text-[10px] font-bold tracking-widest text-gray-400 uppercase transition-colors dark:text-gray-500">
+                    Matched Pairs
+                  </p>
+                  <div class="flex w-full flex-1 items-center justify-center">
+                    <h3
+                      class="text-xl leading-tight font-bold tracking-tight text-gray-900 dark:text-white">
+                      1.58 Million
+                    </h3>
+                  </div>
+                </div>
+                <div
+                  class="group hover:shadow-brand/5 hover:border-brand/20 flex min-h-[90px] flex-col items-center rounded-2xl border border-gray-100 bg-white/50 p-4 text-center backdrop-blur-sm transition-all duration-300 hover:shadow-lg dark:border-gray-800 dark:bg-gray-900/40">
+                  <p
+                    class="group-hover:text-brand mb-1 w-full text-[10px] font-bold tracking-widest text-gray-400 uppercase transition-colors dark:text-gray-500">
+                    Locations
+                  </p>
+                  <div class="flex w-full flex-1 items-center justify-center">
+                    <h3
+                      class="text-xl leading-tight font-bold tracking-tight text-gray-900 dark:text-white">
+                      879,318
+                    </h3>
+                  </div>
+                </div>
+                <div
+                  class="group hover:shadow-brand/5 hover:border-brand/20 flex min-h-[90px] flex-col items-center rounded-2xl border border-gray-100 bg-white/50 p-4 text-center backdrop-blur-sm transition-all duration-300 hover:shadow-lg dark:border-gray-800 dark:bg-gray-900/40">
+                  <p
+                    class="group-hover:text-brand mb-1 w-full text-[10px] font-bold tracking-widest text-gray-400 uppercase transition-colors dark:text-gray-500">
+                    Modalities
+                  </p>
+                  <div class="flex w-full flex-1 items-center justify-center">
+                    <h3
+                      class="text-xl leading-tight font-bold tracking-tight text-gray-900 dark:text-white">
+                      3
+                    </h3>
+                  </div>
+                </div>
+                <div
+                  class="group hover:shadow-brand/5 hover:border-brand/20 flex min-h-[90px] flex-col items-center rounded-2xl border border-gray-100 bg-white/50 p-4 text-center backdrop-blur-sm transition-all duration-300 hover:shadow-lg dark:border-gray-800 dark:bg-gray-900/40">
+                  <p
+                    class="group-hover:text-brand mb-1 w-full text-[10px] font-bold tracking-widest text-gray-400 uppercase transition-colors dark:text-gray-500">
+                    Citations
+                  </p>
+                  <div class="flex w-full flex-1 items-center justify-center">
+                    <h3
+                      class="text-xl leading-tight font-bold tracking-tight text-gray-900 dark:text-white">
+                      500+
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Visual Anchor & Quick Actions (5/12) -->
+            <div class="space-y-5 md:space-y-6 lg:col-span-5">
+              <!-- Compact Featured Image -->
+              <div
+                class="group hover:shadow-brand/10 hover:border-brand/30 relative overflow-hidden rounded-2xl border border-gray-200/60 bg-gray-100 shadow-2xl transition-all duration-500 dark:border-gray-800 dark:bg-gray-800">
+                <img
+                  class="aspect-video h-auto w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                  src="/images/datasets/cvusa.jpg" alt="Cross-View USA" />
+              </div>
+
+              <!-- Download Button -->
+              <div class="w-full">
+                <a href="https://mvrl.cse.wustl.edu/datasets/cvusa/" target="_blank"
+                  class="hover:border-brand dark:hover:border-brand inline-flex w-full items-center justify-center gap-2.5 rounded-lg border border-gray-200 bg-white px-6 py-3 text-sm font-medium text-gray-900 no-underline shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1 dark:border-gray-800 dark:bg-gray-900/60 dark:text-white">
+                  <i class="fa-solid fa-download"></i> Download Dataset
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+      </div>
+    </section>
+
+    <!-- Main Content Body -->
+    <div class="container">
+      <div class="space-y-8">
+        <!-- Reference Publication Section -->
+        <section class="mt-10 mb-12">
+          <div class="mb-6 flex items-center gap-4">
+            <div
+              class="bg-brand/10 dark:bg-brand/20 text-brand flex h-10 w-10 items-center justify-center rounded-lg">
+              <i class="fa-solid fa-bookmark text-base"></i>
+            </div>
+            <div>
+              <h2 class="mb-1 text-2xl leading-none font-bold text-gray-900 dark:text-white">
+                Reference Publications
+              </h2>
+              <p
+                class="m-0 px-1 text-xs font-bold tracking-widest text-gray-400 uppercase dark:text-gray-500">
+                Papers that introduced this dataset
+              </p>
+            </div>
+          </div>
+
+          <div class="mx-auto max-w-6xl px-6">
+            <div class="space-y-6">
+
+              <div
+                class="cite-btn group hover:border-brand/50 cursor-pointer rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition-all duration-300 hover:shadow-md sm:p-5 dark:border-gray-800 dark:bg-gray-950/40"
+                data-hs-overlay="#hs-citation-modal" data-title="Wide-Area Image Geolocalization with Aerial Reference Imagery"
+                data-authors="Scott Workman, Richard Souvenir, and Nathan Jacobs" data-venue="in&nbsp;<i>IEEE International Conference on Computer Vision (ICCV)</i>"
+                data-doi="10.1109/ICCV.2015.451" data-url="http://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Workman_Wide-Area_Image_Geolocalization_ICCV_2015_paper.pdf"
+                data-project-page="/research/deeplyfound/" data-code="https://github.com/scottworkman/deeplyfound/"
+                data-dataset="https://mvrl.cse.wustl.edu/datasets/cvusa/" data-bibtex="@inproceedings{workman2015wide,
+  author={Scott Workman and Richard Souvenir and Nathan Jacobs},
+  title={{Wide-Area Image Geolocalization with Aerial Reference Imagery}},
+  booktitle={{IEEE International Conference on Computer Vision (ICCV)}},
+  year={2015}
+}">
+                <div
+                  class="flex flex-col justify-between gap-6 overflow-hidden lg:flex-row lg:items-center">
+                  <!-- Metadata Column -->
+                  <div
+                    class="flex min-w-0 flex-1 origin-left items-center gap-6 transition-all duration-300 hover:translate-x-1.5 hover:scale-[1.01]">
+                    <!-- Image Section -->
+                    <div class="relative hidden flex-none sm:block">
+                      <div
+                        class="relative h-24 w-32 overflow-hidden rounded-xl border border-gray-200 shadow-sm dark:border-gray-800">
+                        <img src="/images/research/deeplyfound/deeplyfound.jpg" alt="Wide-Area Image Geolocalization with Aerial Reference Imagery"
+                          class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                        <div
+                          class="absolute top-2 right-2 rounded border border-white/20 bg-black/60 px-1.5 py-0.5 text-[10px] font-bold tracking-wider text-white backdrop-blur-md">
+                          2015
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Metadata Group -->
+                    <div class="min-w-0 flex-1">
+                      <div class="mb-0">
+                        <h3
+                          class="group-hover:text-brand line-clamp-2 text-[17px] leading-snug font-bold tracking-tight text-gray-900 transition-colors md:line-clamp-none dark:text-white">
+                          Wide-Area Image Geolocalization with Aerial Reference Imagery
+                        </h3>
+                        <p
+                          class="mb-2 text-[13px] font-medium text-gray-500 italic md:line-clamp-1 dark:text-gray-400">
+                          Scott Workman, Richard Souvenir, and Nathan Jacobs
+                        </p>
+                        <div class="mt-1 leading-[1.1]">
+                          <span
+                            class="text-brand dark:text-brand-light text-[11px] font-bold tracking-wider uppercase">
+                            in&nbsp;<i>IEEE International Conference on Computer Vision (ICCV)</i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Topics Area (Aligned Right) -->
+                  <div
+                    class="hidden shrink-0 origin-right flex-wrap items-center justify-end gap-1.5 transition-transform duration-300 group-hover:scale-105 lg:flex lg:w-[320px]">
+                    <span
+                      class="rounded-full border border-gray-200/30 bg-gray-50/50 px-1.5 py-0.5 text-[9px] font-bold tracking-wider text-gray-400 uppercase shadow-sm transition-all dark:border-gray-700/30 dark:bg-gray-800/30 dark:text-gray-500">
+                      Cross-View Learning
+                    </span>
+                    <span
+                      class="rounded-full border border-gray-200/30 bg-gray-50/50 px-1.5 py-0.5 text-[9px] font-bold tracking-wider text-gray-400 uppercase shadow-sm transition-all dark:border-gray-700/30 dark:bg-gray-800/30 dark:text-gray-500">
+                      Feature Learning
+                    </span>
+                    <span
+                      class="rounded-full border border-gray-200/30 bg-gray-50/50 px-1.5 py-0.5 text-[9px] font-bold tracking-wider text-gray-400 uppercase shadow-sm transition-all dark:border-gray-700/30 dark:bg-gray-800/30 dark:text-gray-500">
+                      Image Geolocalization
+                    </span>
+                    <span
+                      class="rounded-full border border-gray-200/30 bg-gray-50/50 px-1.5 py-0.5 text-[9px] font-bold tracking-wider text-gray-400 uppercase shadow-sm transition-all dark:border-gray-700/30 dark:bg-gray-800/30 dark:text-gray-500">
+                      Image-Driven Mapping
+                    </span>
+                    <span
+                      class="rounded-full border border-gray-200/30 bg-gray-50/50 px-1.5 py-0.5 text-[9px] font-bold tracking-wider text-gray-400 uppercase shadow-sm transition-all dark:border-gray-700/30 dark:bg-gray-800/30 dark:text-gray-500">
+                      Multimodal Fusion
+                    </span>
+                    <span
+                      class="rounded-full border border-gray-200/30 bg-gray-50/50 px-1.5 py-0.5 text-[9px] font-bold tracking-wider text-gray-400 uppercase shadow-sm transition-all dark:border-gray-700/30 dark:bg-gray-800/30 dark:text-gray-500">
+                      Remote Sensing
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- Dataset Narrative/Overview -->
+        <section class="mt-6">
+          <div class="mx-auto">
+            <div class="mb-8 flex items-center gap-4">
+              <div
+                class="bg-brand/10 dark:bg-brand/20 text-brand flex h-10 w-10 items-center justify-center rounded-lg">
+                <i class="fa-solid fa-lightbulb text-base"></i>
+              </div>
+              <div>
+                <h2 class="mb-1 text-2xl leading-none font-bold text-gray-900 dark:text-white">
+                  Dataset Details
+                </h2>
+                <p
+                  class="m-0 px-1 text-xs font-bold tracking-widest text-gray-400 uppercase dark:text-gray-500">
+                  Technical specifications
+                </p>
+              </div>
+            </div>
+            <div
+              class="prose prose-lg dark:prose-invert prose-brand mx-auto max-w-6xl px-6 text-justify leading-relaxed text-gray-700 md:text-left dark:text-gray-300">
+              <p>The <strong>Cross-View USA (CVUSA)</strong> dataset is a large-scale benchmark for <strong>Cross-View Image Geolocalization</strong>, <strong>Cross-View Image Synthesis</strong>, and <strong>Autonomous Navigation</strong> for UAVs. It provides 1.58 million matched image pairs across the contiguous United States to support research in learning joint semantic representations between ground-level and overhead perspectives. This data enables work in cross-view feature alignment, localization in GPS-denied environments, and generative image synthesis.</p>
+              <h3>Dataset Features</h3>
+              <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-8 not-prose">
+                <div class="flex flex-col p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm transition-all duration-300 hover:border-brand/30 hover:shadow-lg hover:shadow-brand/5 hover:-translate-y-1">
+                  <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-blue-500/10 text-blue-600 p-2 rounded-lg"><i class="fa-solid fa-map-location-dot text-sm"></i></div>
+                    <h4 class="font-bold text-gray-900 dark:text-white text-sm m-0">Matched Pairs</h4>
+                  </div>
+                  <ul class="text-[12px] text-gray-500 dark:text-gray-400 space-y-2 list-none p-0 m-0 leading-relaxed">
+                    <li><span class="font-bold text-gray-900 dark:text-gray-200">Scale:</span> 1.58 million matched ground-to-aerial pairs across the US.</li>
+                    <li><span class="font-bold text-gray-900 dark:text-gray-200">Locations:</span> 879,318 unique georeferenced locations, including roadway-centered and in-the-wild viewpoints.</li>
+                  </ul>
+                </div>
+                <div class="flex flex-col p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm transition-all duration-300 hover:border-brand/30 hover:shadow-lg hover:shadow-brand/5 hover:-translate-y-1">
+                  <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-purple-500/10 text-purple-600 p-2 rounded-lg"><i class="fa-solid fa-images text-sm"></i></div>
+                    <h4 class="font-bold text-bold text-gray-900 dark:text-white text-sm m-0">Modal Diversity</h4>
+                  </div>
+                  <ul class="text-[12px] text-gray-500 dark:text-gray-400 space-y-2 list-none p-0 m-0 leading-relaxed">
+                    <li><span class="font-bold text-gray-900 dark:text-gray-200">Street View:</span> 1.03 million perspective views extracted from panoramas.</li>
+                    <li><span class="font-bold text-gray-900 dark:text-gray-200">Flickr:</span> 551,851 geo-tagged "in-the-wild" social media images.</li>
+                  </ul>
+                </div>
+                <div class="flex flex-col p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm transition-all duration-300 hover:border-brand/30 hover:shadow-lg hover:shadow-brand/5 hover:-translate-y-1">
+                  <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-green-500/10 text-green-600 p-2 rounded-lg"><i class="fa-solid fa-layer-group text-sm"></i></div>
+                    <h4 class="font-bold text-gray-900 dark:text-white text-sm m-0">Multi-Scale Aerial</h4>
+                  </div>
+                  <ul class="text-[12px] text-gray-500 dark:text-gray-400 space-y-2 list-none p-0 m-0 leading-relaxed">
+                    <li><span class="font-bold text-gray-900 dark:text-gray-200">Resolutions:</span> High-fidelity 800x800 tiles at Bing Maps zoom levels 14, 16, and 18.</li>
+                    <li><span class="font-bold text-gray-900 dark:text-gray-200">Alignment:</span> Centered at ground query locations for consistent cross-view matching.</li>
+                  </ul>
+                </div>
+                <div class="flex flex-col p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm transition-all duration-300 hover:border-brand/30 hover:shadow-lg hover:shadow-brand/5 hover:-translate-y-1">
+                  <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-orange-500/10 text-orange-600 p-2 rounded-lg"><i class="fa-solid fa-crosshairs text-sm"></i></div>
+                    <h4 class="font-bold text-gray-900 dark:text-white text-sm m-0">Spatial Integrity</h4>
+                  </div>
+                  <ul class="text-[12px] text-gray-500 dark:text-gray-400 space-y-2 list-none p-0 m-0 leading-relaxed">
+                    <li><span class="font-bold text-gray-900 dark:text-gray-200">Sampling:</span> 100x100 grid binned collection strategy to eliminate urban bias.</li>
+                    <li><span class="font-bold text-gray-900 dark:text-gray-200">Filtering:</span> CNN-based scene classification to filter for outdoor integrity.</li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </article>
+
+  <!-- Citation Modal -->
+  <div id="hs-citation-modal" class="hs-overlay hidden size-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto pointer-events-none" role="dialog" tabindex="-1" aria-labelledby="hs-citation-modal-label">
+    <div class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-100 ease-out transition-all sm:max-w-3xl sm:w-full m-3 sm:mx-auto min-h-[calc(100%-3.5rem)] flex items-center">
+      <div class="w-full flex flex-col bg-white border shadow-sm rounded-2xl pointer-events-auto dark:bg-gray-900 dark:border-gray-800 dark:shadow-neutral-700/70 overflow-hidden">
+
+        <div class="p-6 sm:p-8">
+          <div class="flex justify-between items-start gap-4">
+            <div class="flex-1">
+              <div id="modal-badge-container" class="mb-1.5 hidden">
+                <span id="modal-badge" class="bg-brand/10 text-brand dark:bg-brand/20 dark:text-brand-light border-brand/20 inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-bold tracking-wider uppercase"></span>
+              </div>
+              <h3 id="modal-title" class="text-xl font-bold text-gray-900 dark:text-white leading-tight mb-2"></h3>
+              <p id="modal-authors" class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-1"></p>
+              <p id="modal-venue" class="text-gray-400 dark:text-gray-500 text-xs italic"></p>
+            </div>
+            <button type="button" class="shrink-0 size-8 inline-flex justify-center items-center gap-x-2 rounded-full border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700 transition-colors" aria-label="Close" data-hs-overlay="#hs-citation-modal">
+              <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="flex flex-wrap gap-2 mb-6">
+            <a id="modal-project" href="" target="_blank" class="items-center gap-x-1.5 py-1.5 px-3 rounded-lg text-xs font-semibold bg-brand/10 text-brand dark:bg-brand/20 dark:text-brand-light border border-brand/20 hover:bg-brand hover:text-white transition-all no-underline shadow-sm hidden">
+              <i class="fa-solid fa-desktop text-[10px]"></i> Project Page
+            </a>
+            <a id="modal-paper" href="" target="_blank" class="items-center gap-x-1.5 py-1.5 px-3 rounded-lg text-xs font-semibold bg-brand/10 text-brand dark:bg-brand/20 dark:text-brand-light border border-brand/20 hover:bg-brand hover:text-white transition-all no-underline shadow-sm hidden">
+              <i class="fa-solid fa-file-lines text-[10px]"></i> Paper
+            </a>
+            <a id="modal-dataset" href="" target="_blank" class="items-center gap-x-1.5 py-1.5 px-3 rounded-lg text-xs font-semibold bg-brand/10 text-brand dark:bg-brand/20 dark:text-brand-light border border-brand/20 hover:bg-brand hover:text-white transition-all no-underline shadow-sm hidden">
+              <i class="fa-solid fa-database text-[10px]"></i> Dataset
+            </a>
+            <a id="modal-code" href="" target="_blank" class="items-center gap-x-1.5 py-1.5 px-3 rounded-lg text-xs font-semibold bg-brand/10 text-brand dark:bg-brand/20 dark:text-brand-light border border-brand/20 hover:bg-brand hover:text-white transition-all no-underline shadow-sm hidden">
+              <i class="fa-solid fa-code text-[10px]"></i> Code
+            </a>
+            <a id="modal-doi" href="" target="_blank" class="items-center gap-x-1.5 py-1.5 px-3 rounded-lg text-xs font-semibold bg-brand/10 text-brand dark:bg-brand/20 dark:text-brand-light border border-brand/20 hover:bg-brand hover:text-white transition-all no-underline shadow-sm hidden">
+              <i class="fa-solid fa-link text-[10px]"></i> DOI
+            </a>
+          </div>
+
+          <div class="border-t border-gray-100 dark:border-gray-800 pt-5">
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <div class="text-xs font-bold text-gray-800 dark:text-white uppercase tracking-wider opacity-50">
+                BibTeX Citation
+              </div>
+              <button type="button" id="modal-copy-btn" class="inline-flex items-center gap-x-1.5 py-1 px-2.5 rounded-lg text-[10px] font-bold bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:bg-brand hover:text-white dark:hover:bg-brand dark:hover:text-white transition-all shadow-sm">
+                <i class="fa-regular fa-copy text-[10px]"></i> Copy
+              </button>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-950/50 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden text-left">
+              <pre id="modal-bibtex" class="p-5 text-[11px] sm:text-xs whitespace-pre font-mono text-gray-700 dark:text-gray-300 mb-0 leading-relaxed max-h-72 overflow-x-auto overflow-y-auto scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-800"></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Publication Details Modal logic (Common across all Cite buttons)
+      const initCitationModal = () => {
+        const detailsBtns = document.querySelectorAll('.cite-btn');
+        const modalTitle = document.getElementById('modal-title');
+        const modalAuthors = document.getElementById('modal-authors');
+        const modalVenue = document.getElementById('modal-venue');
+        const modalProject = document.getElementById('modal-project');
+        const modalCode = document.getElementById('modal-code');
+        const modalDataset = document.getElementById('modal-dataset');
+        const modalDoi = document.getElementById('modal-doi');
+        const modalPaper = document.getElementById('modal-paper');
+        const modalBadge = document.getElementById('modal-badge');
+        const modalBadgeContainer = document.getElementById('modal-badge-container');
+        const modalBibtex = document.getElementById('modal-bibtex');
+        const modalCopyBtn = document.getElementById('modal-copy-btn');
+
+        if (!detailsBtns.length || !modalTitle) return;
+
+        detailsBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const title = btn.getAttribute('data-title');
+            const authors = btn.getAttribute('data-authors');
+            const venue = btn.getAttribute('data-venue');
+            const doi = btn.getAttribute('data-doi');
+            const url = btn.getAttribute('data-url');
+            const projectPage = btn.getAttribute('data-project-page');
+            const codeUrl = btn.getAttribute('data-code');
+            const datasetUrl = btn.getAttribute('data-dataset');
+            const bibtex = btn.getAttribute('data-bibtex');
+            const badge = btn.getAttribute('data-badge');
+
+            if (modalTitle) modalTitle.innerText = title || 'Citation';
+            if (modalAuthors) modalAuthors.innerText = authors || '';
+            if (modalVenue) modalVenue.innerHTML = venue || '';
+            if (modalBibtex) modalBibtex.innerText = bibtex || '';
+
+            if (badge && badge !== "null" && modalBadge && modalBadgeContainer) {
+              modalBadge.innerText = badge;
+              modalBadgeContainer.classList.remove('hidden');
+            } else if (modalBadgeContainer) {
+              modalBadgeContainer.classList.add('hidden');
+            }
+
+            const setLink = (el, href) => {
+              if (href && href !== "null" && el) {
+                el.href = href;
+                el.classList.remove('hidden');
+                el.classList.add('inline-flex');
+              } else if (el) {
+                el.classList.add('hidden');
+                el.classList.remove('inline-flex');
+              }
+            };
+
+            setLink(modalProject, projectPage);
+            setLink(modalCode, codeUrl);
+            setLink(modalDataset, datasetUrl);
+            setLink(modalPaper, url);
+            setLink(modalDoi, doi ? `https://doi.org/${doi}` : null);
+          });
+        });
+
+        if (modalCopyBtn) {
+          modalCopyBtn.addEventListener('click', () => {
+            const bibtex = modalBibtex ? modalBibtex.innerText : '';
+            navigator.clipboard.writeText(bibtex).then(() => {
+              const icon = modalCopyBtn.querySelector('i');
+              const oldClass = icon.className;
+              icon.className = 'fa-solid fa-check text-green-500';
+              setTimeout(() => icon.className = oldClass, 2000);
+            });
+          });
+        }
+      };
+
+      initCitationModal();
+      // Re-initialize if content is dynamically added elsewhere (e.g. view switching)
+      document.addEventListener('publicationsViewSwitched', () => initCitationModal());
+    });
+
+  </script>
+  <div class="mt-auto h-16"></div>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-200 dark:border-gray-800">
+    <div class="container mx-auto py-10">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="text-center md:text-left">
+          <p class="text-sm font-semibold text-gray-900 dark:text-gray-100">&copy; Scott Workman 2026</p>
+          <p class="text-xs text-gray-500 dark:text-gray-500 mb-0">Computer Vision &middot; Machine Learning &middot; Generative AI</p>
+        </div>
+        <div class="flex items-center gap-5">
+          <a href="https://scholar.google.com/citations?user=uhHXJzMAAAAJ" class="text-gray-400 hover:text-brand dark:hover:text-brand-light transition-colors" aria-label="Google Scholar">
+            <i class="fa-solid fa-graduation-cap text-lg"></i>
+          </a>
+          <a href="https://github.com/scottworkman" class="text-gray-400 hover:text-brand dark:hover:text-brand-light transition-colors" aria-label="GitHub">
+            <i class="fa-brands fa-github text-lg"></i>
+          </a>
+          <a href="https://orcid.org/0000-0002-7145-7484" class="text-gray-400 hover:text-brand dark:hover:text-brand-light transition-colors" aria-label="ORCID">
+            <i class="fa-brands fa-orcid text-lg"></i>
+          </a>
+          <a href="/contact/" class="text-gray-400 hover:text-brand dark:hover:text-brand-light transition-colors" aria-label="Email">
+            <i class="fa-solid fa-envelope text-lg"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script src="/js/base.js"></script>
+  <script src="/js/preline.js"></script>
+
+</body>
+
+</html>
