@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Scott Workman — Research Scientist specializing in computer vision, machine learning, and generative AI.">
+  <meta name="author" content="Scott Workman">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+
+  <title>Scott Workman</title>
+
+  <!-- Prevent FOUC on dark mode -->
+  <script>
+    // This code should be added to <head>.
+    // It's used to prevent page load glitches.
+    const html = document.querySelector('html');
+    const isLightOrAuto = localStorage.getItem('hs_theme') === 'light' || (localStorage.getItem('hs_theme') === 'auto' && !window.matchMedia('(prefers-color-scheme: dark)').matches);
+    const isDarkOrAuto = localStorage.getItem('hs_theme') === 'dark' || (localStorage.getItem('hs_theme') === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+    if (isLightOrAuto && html.classList.contains('dark')) html.classList.remove('dark');
+    else if (isDarkOrAuto && html.classList.contains('light')) html.classList.remove('light');
+    else if (isDarkOrAuto && !html.classList.contains('dark')) html.classList.add('dark');
+    else if (isLightOrAuto && !html.classList.contains('light')) html.classList.add('light');
+
+  </script>
+
+  <!-- Tailwind CSS -->
+  <link href="/styles/style.min.css" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="flex flex-col min-h-[calc(100dvh-72px)] mt-[72px]">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 inset-x-0 z-50 bg-white/80 dark:bg-gray-950/80 backdrop-blur-lg border-b border-gray-200/60 dark:border-gray-800/60 h-[72px] flex items-center">
+    <div class="container mx-auto flex items-center justify-between">
+      <div class="flex items-center justify-between w-full md:w-auto">
+        <a class="text-gray-900 dark:text-white font-bold text-lg tracking-[4px] uppercase no-underline hover:no-underline hover:text-gray-900 dark:hover:text-white" href="/">Scott Workman</a>
+        <div class="md:hidden flex items-center gap-3">
+          <button type="button" class="hs-dark-mode-active:hidden block hs-dark-mode font-medium text-foreground rounded-full hover:bg-surface-hover focus:outline-hidden focus:bg-surface-focus" data-hs-theme-click-value="dark">
+            <span class="group inline-flex shrink-0 justify-center items-center size-9">
+              <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+              </svg>
+            </span>
+          </button>
+          <button type="button" class="hs-dark-mode-active:block hidden hs-dark-mode font-medium text-foreground rounded-full hover:bg-surface-hover focus:outline-hidden focus:bg-surface-focus" data-hs-theme-click-value="light">
+            <span class="group inline-flex shrink-0 justify-center items-center size-9">
+              <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2" />
+                <path d="M12 20v2" />
+                <path d="m4.93 4.93 1.41 1.41" />
+                <path d="m17.66 17.66 1.41 1.41" />
+                <path d="M2 12h2" />
+                <path d="M20 12h2" />
+                <path d="m6.34 17.66-1.41 1.41" />
+                <path d="m19.07 4.93-1.41 1.41" />
+              </svg>
+            </span>
+          </button>
+          <button type="button" class="p-2 text-gray-500 dark:text-gray-400 rounded-lg border border-gray-200 dark:border-gray-700 hs-collapse-toggle" aria-expanded="false" aria-controls="navbar-collapse" data-hs-collapse="#navbar-collapse" aria-label="Toggle navigation">
+            <svg class="hs-collapse-open:hidden w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg class="hs-collapse-open:block hidden w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div id="navbar-collapse" class="hs-collapse hidden md:flex overflow-hidden transition-all duration-300 absolute md:relative top-[72px] md:top-0 left-0 w-full md:w-auto md:grow md:ml-8 bg-white dark:bg-gray-950 md:bg-transparent md:dark:bg-transparent shadow-xl md:shadow-none border-b md:border-none border-gray-200/60 dark:border-gray-800/60 transition-all duration-300">
+        <ul class="flex flex-col md:flex-row md:items-center list-none m-0 p-4 md:p-0 md:ml-auto gap-1">
+          <li><a class="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-brand dark:hover:text-brand-light no-underline block py-3 md:py-0 px-3 transition-colors" href="/research/">Research</a></li>
+          <li><a class="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-brand dark:hover:text-brand-light no-underline block py-3 md:py-0 px-3 transition-colors" href="/publications/">Publications</a></li>
+          <li><a class="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-brand dark:hover:text-brand-light no-underline block py-3 md:py-0 px-3 transition-colors" href="/datasets/">Datasets</a></li>
+          <li><a class="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-brand dark:hover:text-brand-light no-underline block py-3 md:py-0 px-3 transition-colors" href="/labs/">Labs</a></li>
+          <li><a class="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-brand dark:hover:text-brand-light no-underline block py-3 md:py-0 px-3 transition-colors" href="/resources/cv.pdf">CV</a></li>
+          <li><a class="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-brand dark:hover:text-brand-light no-underline block py-3 md:py-0 px-3 transition-colors" href="/contact/">Contact</a></li>
+          <li class="hidden md:flex items-center pl-3 ml-2 border-l border-gray-200 dark:border-gray-700">
+            <button type="button" class="hs-dark-mode-active:hidden block hs-dark-mode font-medium text-foreground rounded-full hover:bg-surface-hover focus:outline-hidden focus:bg-surface-focus" data-hs-theme-click-value="dark">
+              <span class="group inline-flex shrink-0 justify-center items-center size-9">
+                <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                </svg>
+              </span>
+            </button>
+            <button type="button" class="hs-dark-mode-active:block hidden hs-dark-mode font-medium text-foreground rounded-full hover:bg-surface-hover focus:outline-hidden focus:bg-surface-focus" data-hs-theme-click-value="light">
+              <span class="group inline-flex shrink-0 justify-center items-center size-9">
+                <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="4" />
+                  <path d="M12 2v2" />
+                  <path d="M12 20v2" />
+                  <path d="m4.93 4.93 1.41 1.41" />
+                  <path d="m17.66 17.66 1.41 1.41" />
+                  <path d="M2 12h2" />
+                  <path d="M20 12h2" />
+                  <path d="m6.34 17.66-1.41 1.41" />
+                  <path d="m19.07 4.93-1.41 1.41" />
+                </svg>
+              </span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Page Header / Hero -->
+  <section class="relative py-10 overflow-hidden border-b border-gray-200 dark:border-gray-800 mb-10">
+    <div class="absolute inset-0 z-0 bg-gray-50 dark:bg-gray-950">
+      <!-- Subtle background map/image matching home page if available, otherwise stylish gradient -->
+      <img src="/images/hero_background.jpg" alt="" class="absolute inset-0 w-full h-full object-cover opacity-10 dark:opacity-10 grayscale">
+      <div class="absolute inset-0 bg-gradient-to-b from-white/80 via-transparent to-white dark:from-gray-950/80 dark:via-transparent dark:to-gray-950 pointer-events-none"></div>
+    </div>
+
+    <div class="container mx-auto relative z-10">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 tracking-tight mb-3">Research</h1>
+      <p class="text-gray-600 dark:text-gray-400 max-w-3xl mb-0">
+        Browse projects by topic or search by keyword.
+      </p>
+    </div>
+  </section>
+
+
+  <div class="container mx-auto">
+    <!-- Mobile Filter Toggle -->
+    <button type="button"
+      class="hs-collapse-toggle mb-6 flex w-full items-center justify-between rounded-xl border border-gray-100 bg-gray-50/50 p-4 text-sm font-semibold text-gray-900 transition-colors md:hidden dark:border-gray-800/60 dark:bg-white/[0.02] dark:text-gray-100"
+      id="filter-collapse-toggle" data-hs-collapse="#filter-console-content">
+      <span><i class="fa-solid fa-filter mr-2 text-gray-500 dark:text-gray-400"></i> Filter
+        Projects</span>
+      <svg class="hs-collapse-open:rotate-180 h-4 w-4 text-gray-500 transition-transform"
+        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m6 9 6 6 6-6" />
+      </svg>
+    </button>
+
+    <!-- Filter Console -->
+    <div id="filter-console-content"
+      class="hs-collapse hidden w-full overflow-hidden transition-[height] duration-300 md:block"
+      aria-labelledby="filter-collapse-toggle">
+      <div
+        class="mb-10 rounded-2xl border border-gray-100 bg-gray-50/50 p-6 shadow-sm dark:border-gray-800/60 dark:bg-white/[0.02]">
+        <div class="mb-6 flex flex-wrap gap-2" id="topic-filters">
+          <button class="topic-pill active" data-topic="all">All</button>
+          <button class="topic-pill" data-topic="3D Vision">3D Vision</button>
+          <button class="topic-pill" data-topic="Camera Calibration">Camera Calibration</button>
+          <button class="topic-pill" data-topic="Cross-View Learning">Cross-View Learning</button>
+          <button class="topic-pill" data-topic="Depth Estimation">Depth Estimation</button>
+          <button class="topic-pill" data-topic="Digital Forensics">Digital Forensics</button>
+          <button class="topic-pill" data-topic="Feature Learning">Feature Learning</button>
+          <button class="topic-pill" data-topic="Generative AI">Generative AI</button>
+          <button class="topic-pill" data-topic="Geo-Temporal Analysis">Geo-Temporal Analysis</button>
+          <button class="topic-pill" data-topic="Geometric Vision">Geometric Vision</button>
+          <button class="topic-pill" data-topic="Geospatial AI">Geospatial AI</button>
+          <button class="topic-pill" data-topic="Image Geolocalization">Image Geolocalization</button>
+          <button class="topic-pill" data-topic="Image Synthesis">Image Synthesis</button>
+          <button class="topic-pill" data-topic="Image-Driven Mapping">Image-Driven Mapping</button>
+          <button class="topic-pill" data-topic="Multimodal Fusion">Multimodal Fusion</button>
+          <button class="topic-pill" data-topic="Pose Estimation">Pose Estimation</button>
+          <button class="topic-pill" data-topic="Remote Sensing">Remote Sensing</button>
+          <button class="topic-pill" data-topic="Scene Understanding">Scene Understanding</button>
+          <button class="topic-pill" data-topic="Semantic Segmentation">Semantic Segmentation</button>
+          <button class="topic-pill" data-topic="Traffic Modeling">Traffic Modeling</button>
+          <button class="topic-pill" data-topic="Urban Dynamics">Urban Dynamics</button>
+        </div>
+
+        <div class="flex flex-col justify-between gap-4 md:flex-row md:items-center">
+          <!-- Search -->
+          <div class="relative w-full max-w-md">
+            <input type="text" id="research-search"
+              class="focus:ring-brand/30 focus:border-brand w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 pr-10 pl-10 text-sm text-gray-700 placeholder-gray-400 filter transition-all focus:ring-2 focus:outline-none dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300 dark:placeholder-gray-500"
+              placeholder="Search projects..." aria-label="Search research projects" />
+            <div class="absolute top-1/2 left-3 -translate-y-1/2 text-gray-400">
+              <i class="fa-solid fa-search text-sm"></i>
+            </div>
+            <button id="search-clear"
+              class="absolute top-1/2 right-3 hidden -translate-y-1/2 text-gray-400 transition-colors hover:text-gray-600 dark:hover:text-gray-200"
+              aria-label="Clear search">
+              <i class="fa-solid fa-circle-xmark text-sm"></i>
+            </button>
+          </div>
+
+          <!-- Result Count -->
+          <div class="text-sm font-medium text-gray-500 dark:text-gray-400">
+            Showing
+            <span id="results-count"
+              class="text-gray-900 tabular-nums dark:text-gray-100">33</span>
+            of 33 projects
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div id="no-results-message" class="hidden py-20 text-center">
+      <div
+        class="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-gray-50 dark:bg-gray-900">
+        <i class="fa-solid fa-magnifying-glass text-2xl text-gray-300 dark:text-gray-700"></i>
+      </div>
+      <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-gray-100">No projects found</h3>
+      <p class="mb-6 text-sm text-gray-500 dark:text-gray-400">
+        Try adjusting your filters or search keywords.
+      </p>
+      <button id="reset-filters"
+        class="bg-brand hover:bg-brand-dark inline-flex items-center rounded-lg px-4 py-2 text-sm font-medium text-white transition-colors">
+        Clear all filters
+      </button>
+    </div>
+
+    <!-- Research Grid -->
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" id="research-grid">
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="https://mixed-view.github.io/"
+        data-topics="Cross-View Learning,Generative AI,Geospatial AI,Image Synthesis,Multimodal Fusion,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/mvps.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="Mixed-View Panorama Synthesis using Geospatially Guided Diffusion">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            Mixed-View Panorama Synthesis using Geospatially Guided Diffusion
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            We propose a new task, mixed-view panorama synthesis, in which a satellite image and a set of nearby panoramas are used to render a panorama at a novel location. Our approach uses diffusion-based modeling and attention to enable flexible, multimodal control.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Zhexiao Xiong, Xin Xing, Scott Workman, Subash Khanal, Nathan Jacobs</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">TMLR 2025</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="/research/motion/"
+        data-topics="Geo-Temporal Analysis,Geospatial AI,Remote Sensing,Semantic Segmentation,Traffic Modeling,Urban Dynamics,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/motion/motion.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="Probabilistic Image-Driven Traffic Modeling via Remote Sensing">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            Probabilistic Image-Driven Traffic Modeling via Remote Sensing
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            This work addresses the task of modeling spatiotemporal traffic patterns directly from overhead imagery, which we refer to as image-driven traffic modeling. Our approach includes a geo-temporal positional encoding module for integrating geo-temporal context and a probabilistic objective function for estimating traffic speeds that naturally models temporal variations.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Scott Workman, Armin Hadzic</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">ECCV 2024</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="https://openaccess.thecvf.com/content/WACV2024/papers/Greenwell_WATCH_Wide-Area_Terrestrial_Change_Hypercube_WACV_2024_paper.pdf"
+        data-topics="Geo-Temporal Analysis,Geospatial AI,Multimodal Fusion,Remote Sensing,Semantic Segmentation,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/watch.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="WATCH: Wide-Area Terrestrial Change Hypercube">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            WATCH: Wide-Area Terrestrial Change Hypercube
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            In this work, we introduce an adaptable framework and network architecture capable of predicting on subsets of the available platforms, bands, or temporal ranges it was trained on. Our system, called WATCH, is highly general and can be applied to a variety of geospatial tasks.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Connor Greenwell, Jon Crall, Matthew Purri, Kristin Dana, Nathan Jacobs, Armin Hadzic, Scott Workman, and Matt Leotta</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">WACV 2024</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="/research/low2high/"
+        data-topics="Generative AI,Geospatial AI,Image Synthesis,Remote Sensing,Semantic Segmentation,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/low2high/low2high.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="Handling Image and Label Resolution Mismatch in Remote Sensing">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            Handling Image and Label Resolution Mismatch in Remote Sensing
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            We present a method that is supervised only using low-resolution labels, but takes advantage of an exemplar set of high-resolution labels to guide the learning process.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Scott Workman, Armin Hadzic, M. Usman Rafique</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">WACV 2023</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="/research/geoattention/"
+        data-topics="Cross-View Learning,Geospatial AI,Image-Driven Mapping,Multimodal Fusion,Remote Sensing,Semantic Segmentation,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/geoattention/geoattention.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="Revisiting Near/Remote Sensing with Geospatial Attention">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            Revisiting Near/Remote Sensing with Geospatial Attention
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            We introduce a novel architecture for near/remote sensing that is based on geospatial attention and demonstrate its use for five segmentation tasks.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Scott Workman, M. Usman Rafique, Hunter Blanton, Nathan Jacobs</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">CVPR 2022</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="https://rafaspadilha.github.io/publication/padilha22content/"
+        data-topics="Cross-View Learning,Digital Forensics,Geo-Temporal Analysis,Multimodal Fusion,Scene Understanding,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/tampering.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="Content-Based Detection of Temporal Metadata Manipulation">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            Content-Based Detection of Temporal Metadata Manipulation
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            We propose an end-to-end approach to verify whether the purported time of capture of an outdoor image is consistent with its content and geographic location.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Rafael Padilha, Tawfiq Salem, Scott Workman, Fernanda A. Andaló, Anderson Rocha, Nathan Jacobs</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">TIFS 2022</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="https://openaccess.thecvf.com/content/WACV2022/papers/Blanton_A_Structure-Aware_Method_for_Direct_Pose_Estimation_WACV_2022_paper.pdf"
+        data-topics="3D Vision,Geometric Vision,Pose Estimation,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/structure-aware.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="A Structure-Aware Method for Direct Pose Estimation">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            A Structure-Aware Method for Direct Pose Estimation
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            We propose a direct pose estimation method that takes inspiration from structure-based approaches to incorporate explicit 3D constraints into the network.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Hunter Blanton, Scott Workman, Nathan Jacobs</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">WACV 2022</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="/research/geodepth/"
+        data-topics="3D Vision,Depth Estimation,Geospatial AI,Multimodal Fusion,Remote Sensing,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/geodepth/geodepth.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="Augmenting Depth Estimation with Geospatial Context">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            Augmenting Depth Estimation with Geospatial Context
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            We explore a new problem, geo-enabled depth estimation, in which the geospatial context of a query image is exploited during the depth estimation process.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Scott Workman, Hunter Blanton</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">ICCV 2021</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="/research/mspn/"
+        data-topics="3D Vision,Geometric Vision,Pose Estimation,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/mspn/mspn.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="Extending Absolute Pose Regression to Multiple Scenes">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            Extending Absolute Pose Regression to Multiple Scenes
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            We propose a novel architecture, Multi-Scene PoseNet (MSPN), that allows for a single network to be used on an arbitrary number of scenes with only a small scene-specific component.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Hunter Blanton, Connor Greenwell, Scott Workman, Nathan Jacobs</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">CVPR 2020 Workshop: VisLocOdomMap</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="/research/artifact/"
+        data-topics="Geospatial AI,Multimodal Fusion,Remote Sensing,Semantic Segmentation,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/artifact/artifact.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="Single Image Cloud Detection via Multi-Image Fusion">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            Single Image Cloud Detection via Multi-Image Fusion
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            Artifacts in imagery captured by remote sensing, such as clouds, snow, and shadows, present challenges for various tasks, including semantic segmentation and object detection. A primary challenge in developing algorithms for identifying such artifacts is the cost of collecting annotated training data. In this work, we explore how recent advances in multi-image fusion can be leveraged to bootstrap single image cloud detection.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Scott Workman, M. Usman Rafique, Hunter Blanton, Connor Greenwell, Nathan Jacobs</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">IGARSS 2020 Oral</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="https://tsalem.github.io/DynamicMaps/"
+        data-topics="Geo-Temporal Analysis,Image Geolocalization,Image-Driven Mapping,Scene Understanding,Semantic Segmentation,Urban Dynamics,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/dynamic-maps.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="Learning a Dynamic Map of Visual Appearance">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            Learning a Dynamic Map of Visual Appearance
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            Our approach integrates dense overhead imagery with location and time metadata into a general framework capable of mapping a wide variety of visual attributes.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Tawfiq Salem, Scott Workman, Nathan Jacobs</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">CVPR 2020</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="/research/traffic/"
+        data-topics="Geo-Temporal Analysis,Geospatial AI,Remote Sensing,Semantic Segmentation,Traffic Modeling,Urban Dynamics,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/traffic/traffic.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="Dynamic Traffic Modeling from Overhead Imagery">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            Dynamic Traffic Modeling from Overhead Imagery
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            We propose an automatic approach for generating dynamic maps of traffic speeds using convolutional neural networks. Our method operates on overhead imagery, is conditioned on location and time, and outputs a local motion model that captures likely directions of travel and corresponding travel speeds.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Scott Workman, Nathan Jacobs</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">CVPR 2020 Oral</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="https://arxiv.org/abs/1909.07499"
+        data-topics="Feature Learning,Geo-Temporal Analysis,Image Geolocalization,Multimodal Fusion,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/whenwhere.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="Learning Geo-Temporal Image Features">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            Learning Geo-Temporal Image Features
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            We propose to implicitly learn to extract geo-temporal image features, which are mid-level features related to when and where an image was captured, by explicitly optimizing for a set of location and time estimation tasks.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Menghua Zhai, Tawfiq Salem, Connor Greenwell, Scott Workman, Robert Pless, Nathan Jacobs</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">BMVC 2018</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="https://tsalem.github.io/audio-mapping/"
+        data-topics="Cross-View Learning,Image-Driven Mapping,Multimodal Fusion,Remote Sensing,Scene Understanding,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/soundscapes.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="A Multimodal Approach to Mapping Soundscapes">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            A Multimodal Approach to Mapping Soundscapes
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            We explore the problem of mapping soundscapes, that is, predicting the types of sounds that are likely to be heard at a given geographic location.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Tawfiq Salem, Menghua Zhai, Scott Workman, and Nathan Jacobs</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">IGARSS 2018, CVPR 2018 Workshop: Sight and Sound</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="https://github.com/weiliansong/FARSA/"
+        data-topics="Scene Understanding,Semantic Segmentation,Traffic Modeling,Urban Dynamics,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/farsa.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="FARSA: Fully Automated Roadway Safety Assessment">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            FARSA: Fully Automated Roadway Safety Assessment
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            We address the task of automatically assessing the safety of roadways for drivers. Such ratings can be used by highway authorities to decide, using cost/benefit analysis, where to invest in infrastructure improvements.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Weilian Song, Scott Workman, Armin Hadzic, Xu Zhang, Eric Green, Mei Chen, Reginald Souleyrette, Nathan Jacobs</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">WACV 2018</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="/research/scenicness/"
+        data-topics="Image Geolocalization,Image-Driven Mapping,Scene Understanding,Semantic Segmentation,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/scenicness/scenicness.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="Understanding and Mapping Natural Beauty">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            Understanding and Mapping Natural Beauty
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            We demonstrate that quantitative measures of scenicness can benefit semantic image understanding, content-aware image processing, and a novel application of cross-view mapping, where the sparsity of ground-level images can be addressed by incorporating unlabeled overhead images in the training and prediction steps.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Scott Workman, Richard Souvenir, Nathan Jacobs</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">ICCV 2017</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="/research/unified/"
+        data-topics="Cross-View Learning,Geospatial AI,Image-Driven Mapping,Multimodal Fusion,Remote Sensing,Semantic Segmentation,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/unified/unified.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="A Unified Model for Near and Remote Sensing">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            A Unified Model for Near and Remote Sensing
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            We propose a novel convolutional neural network architecture for estimating geospatial functions such as population density, land cover, or land use. In our approach, we combine overhead and ground-level images in an end-to-end trainable neural network, which uses kernel regression and density estimation to convert features extracted from the ground-level images into a dense feature map.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Scott Workman, Menghua Zhai, David J. Crandall, Nathan Jacobs</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">ICCV 2017</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="https://openaccess.thecvf.com/content_cvpr_2017/papers/Zhai_Predicting_Ground-Level_Scene_CVPR_2017_paper.pdf"
+        data-topics="Cross-View Learning,Generative AI,Image Synthesis,Multimodal Fusion,Scene Understanding,Semantic Segmentation,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/crossview-transform.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="Predicting Ground-Level Scene Layout from Aerial Imagery">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            Predicting Ground-Level Scene Layout from Aerial Imagery
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            We introduce a novel strategy for learning to extract semantically meaningful features from aerial imagery. Instead of manually labeling the aerial imagery, we propose to predict (noisy) semantic features automatically extracted from co-located ground imagery. Our network architecture takes an aerial image as input, extracts features using a convolutional neural network, and then applies an adaptive transformation to map these features into the ground-level perspective.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Menghua Zhai, Zachary Bessinger, Scott Workman, Nathan Jacobs</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">CVPR 2017</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="/research/deephorizon/"
+        data-topics="Camera Calibration,Geometric Vision,Scene Understanding,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/deephorizon/deephorizon.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="Horizon Lines in the Wild">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            Horizon Lines in the Wild
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            We introduce a large, realistic evaluation dataset, Horizon Lines in the Wild (HLW), containing natural images with labeled horizon lines. Using this dataset, we investigate the application of convolutional neural networks for directly estimating the horizon line, without requiring any explicit geometric constraints or other special cues.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Scott Workman, Menghua Zhai, Nathan Jacobs</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">BMVC 2016</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="https://mvrl.cse.wustl.edu/research/clouds/"
+        data-topics="Camera Calibration,Geo-Temporal Analysis,Geometric Vision,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/cloudmap.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="Cloudmaps from Static Ground-View Video">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            Cloudmaps from Static Ground-View Video
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            Cloud shadows dramatically affect the appearance of outdoor scenes. We describe three approaches that use video of cloud shadows to estimate a cloudmap, a spatio-temporal function that represents the clouds passing over the scene.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Nathan Jacobs, Scott Workman, Richard Souvenir</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">IVC 2016</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Zhai_Detecting_Vanishing_Points_CVPR_2016_paper.pdf"
+        data-topics="Camera Calibration,Geometric Vision,Scene Understanding,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/fasthorizon.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="Detecting Vanishing Points using Global Image Context in a Non-Manhattan World">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            Detecting Vanishing Points using Global Image Context in a Non-Manhattan World
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            We introduce a novel vanishing point detection algorithm that obtains state-of-the-art performance on three benchmark datasets. The main innovation in our method is the use of global image context to sample possible horizon lines, followed by a novel discrete-continuous procedure to score each horizon line by choosing the optimal vanishing points for the line.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Menghua Zhai, Scott Workman, Nathan Jacobs</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">CVPR 2016</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="https://tsalem.github.io/face2year/"
+        data-topics="Geo-Temporal Analysis,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/face2year.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="Analyzing Human Appearance as a Cue for Dating Images">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            Analyzing Human Appearance as a Cue for Dating Images
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            Given an image, we propose to use the appearance of people in the scene to estimate when the picture was taken.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Tawfiq Salem, Scott Workman, Menghua Zhai, Nathan Jacobs</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">WACV 2016</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="https://cs.valdosta.edu/~rpmihail/skyfinder/"
+        data-topics="Geo-Temporal Analysis,Scene Understanding,Semantic Segmentation,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/skyfinder.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="Sky Segmentation in the Wild: An Empirical Study">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            Sky Segmentation in the Wild: An Empirical Study
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            This paper presents the results of a large-scale empirical evaluation of the performance of three state-of-the-art approaches on a new dataset, which consists of roughly 100k images captured “in the wild”.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Radu P Mihail, Scott Workman, Zach Bessinger, Nathan Jacobs</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">WACV 2016</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="https://rbalten.github.io/transient/"
+        data-topics="Geo-Temporal Analysis,Scene Understanding,Semantic Segmentation,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/transient.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="A Fast Method for Estimating Transient Scene Attributes">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            A Fast Method for Estimating Transient Scene Attributes
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            We describe a fast method for estimating transient scene attributes for a single image. Using our method, we explore applications to webcam imagery, including: 1) supporting automatic browsing and querying of large archives of webcam images, 2) constructing maps of transient attributes from webcam imagery, and 3) geolocalizing webcams.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Ryan Baltenberger, Menghua Zhai, Connor Greenwell, Scott Workman, Nathan Jacobs</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">WACV 2016</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="/research/deeplyfound/"
+        data-topics="Cross-View Learning,Feature Learning,Image Geolocalization,Image-Driven Mapping,Multimodal Fusion,Remote Sensing,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/deeplyfound/deeplyfound.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="Wide-Area Image Geolocalization with Aerial Reference Imagery">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            Wide-Area Image Geolocalization with Aerial Reference Imagery
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            We learn a joint feature representation for aerial and ground-level imagery and apply this representation to the problem of cross-view image geolocalization.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Scott Workman, Richard Souvenir, Nathan Jacobs</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">ICCV 2015</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="/research/deepfocal/"
+        data-topics="3D Vision,Camera Calibration,Geometric Vision,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/deepfocal/deepfocal.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="DeepFocal: A Method for Direct Focal Length Estimation">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            DeepFocal: A Method for Direct Focal Length Estimation
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            We introduce a method for directly estimating the focal length of a camera from a single image using a deep convolutional neural network.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Scott Workman, Connor Greenwell, Menghua Zhai, Ryan Baltenberger, Nathan Jacobs</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">ICIP 2015</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="https://mvrl.github.io/pdf/islam2015face2gps.pdf"
+        data-topics="Image Geolocalization,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/face2gps.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="Face2GPS: Estimating Geographic Location from Facial Features">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            Face2GPS: Estimating Geographic Location from Facial Features
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            We propose a data-driven approach to solving the problem of image geo-localization using an image of a face.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Mohammad T. Islam, Scott Workman, Nathan Jacobs</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">ICIP 2015</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="/research/geocnn/"
+        data-topics="Cross-View Learning,Image Geolocalization,Image-Driven Mapping,Multimodal Fusion,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/geocnn/geocnn.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="On the Location Dependence of Convolutional Neural Network Features">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            On the Location Dependence of Convolutional Neural Network Features
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            We show that features extracted from deep convolutional neural networks are useful for problems in geospatial image analysis.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Scott Workman, Nathan Jacobs</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">EARTHVISION 2015</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="https://www.sciencedirect.com/science/article/pii/S1077314214002069"
+        data-topics="3D Vision,Camera Calibration,Depth Estimation,Geometric Vision,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/distributed.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="Scene Shape Estimation from Multiple Partly Cloudy Days">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            Scene Shape Estimation from Multiple Partly Cloudy Days
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            We introduce methods for estimating scene geometry in a distributed camera network using videos from partly cloudy days.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Scott Workman, Richard Souvenir, Nathan Jacobs</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">CVIU 2015</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="/research/rainbows/"
+        data-topics="3D Vision,Camera Calibration,Geometric Vision,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/rainbows/rainbows.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="A Pot of Gold: Rainbows as a Calibration Cue">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            A Pot of Gold: Rainbows as a Calibration Cue
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            We derive constraints and demonstrate methods that allow rainbows to be used for camera geolocalization, calibration and rainbow-specific image editing.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Scott Workman, R. P. Mihail, Nathan Jacobs</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">ECCV 2014</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="https://mvrl.github.io/pdf/islam2014faces.pdf"
+        data-topics="Image Geolocalization,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/geofaces.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="Exploring the Geo-Dependence of Human Face Appearance">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            Exploring the Geo-Dependence of Human Face Appearance
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            Our work explores the little-studied dependence of facial appearance on geographic location. To support this effort, we constructed GeoFaces, a large dataset of geotagged face images.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Mohammad T. Islam, Scott Workman, Hui Wu, Richard Souvenir, Nathan Jacobs</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">WACV 2014</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="https://mvrl.github.io/pdf/jacobs2013multiday.pdf"
+        data-topics="3D Vision,Camera Calibration,Depth Estimation,Geo-Temporal Analysis,Geometric Vision,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/multiday.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="Scene Geometry from Several Partly Cloudy Days">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            Scene Geometry from Several Partly Cloudy Days
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            We describe new methods for estimating the geometry of an outdoor scene using video from multiple partly cloudy days.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Nathan Jacobs, Scott Workman, Richard Souvenir</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">ICDSC 2013</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card group flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-black/20 transition-all duration-300 no-underline hover:no-underline h-full"
+        href="https://openaccess.thecvf.com/content_cvpr_2013/papers/Jacobs_Cloud_Motion_as_2013_CVPR_paper.pdf"
+        data-topics="Camera Calibration,Geo-Temporal Analysis,Geometric Vision,">
+        <div class="h-64 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-4">
+          <img src="/images/research/cloud-tracker.jpg" class="max-w-full max-h-60 w-auto h-auto group-hover:scale-[1.03] transition-transform duration-500" alt="Cloud Motion as a Calibration Cue">
+        </div>
+        <div class="p-5 flex flex-col flex-grow">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors leading-snug min-h-[2.75rem] line-clamp-2 mb-2">
+            Cloud Motion as a Calibration Cue
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-3">
+            We propose cloud motion as a natural scene cue that enables geometric calibration of static outdoor cameras.
+
+          </p>
+          <div class="mt-auto space-y-2">
+            <p class="text-xs font-medium text-author mb-1">Nathan Jacobs, Mohammad T. Islam, Scott Workman</p>
+            <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-venue">CVPR 2013</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <div class="mt-auto h-16"></div>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-200 dark:border-gray-800">
+    <div class="container mx-auto py-10">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="text-center md:text-left">
+          <p class="text-sm font-semibold text-gray-900 dark:text-gray-100">&copy; Scott Workman 2026</p>
+          <p class="text-xs text-gray-500 dark:text-gray-500 mb-0">Computer Vision &middot; Machine Learning &middot; Generative AI</p>
+        </div>
+        <div class="flex items-center gap-5">
+          <a href="https://scholar.google.com/citations?user=uhHXJzMAAAAJ" class="text-gray-400 hover:text-brand dark:hover:text-brand-light transition-colors" aria-label="Google Scholar">
+            <i class="fa-solid fa-graduation-cap text-lg"></i>
+          </a>
+          <a href="https://github.com/scottworkman" class="text-gray-400 hover:text-brand dark:hover:text-brand-light transition-colors" aria-label="GitHub">
+            <i class="fa-brands fa-github text-lg"></i>
+          </a>
+          <a href="https://orcid.org/0000-0002-7145-7484" class="text-gray-400 hover:text-brand dark:hover:text-brand-light transition-colors" aria-label="ORCID">
+            <i class="fa-brands fa-orcid text-lg"></i>
+          </a>
+          <a href="/contact/" class="text-gray-400 hover:text-brand dark:hover:text-brand-light transition-colors" aria-label="Email">
+            <i class="fa-solid fa-envelope text-lg"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script src="/js/base.js"></script>
+  <script src="/js/preline.js"></script>
+
+</body>
+
+</html>
